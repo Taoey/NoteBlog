@@ -75,8 +75,11 @@ public class Myutils {
 	 * @param attr
 	 *            标签的属性名称
 	 * @return 属性值列表
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static List<String> match(String source, String element, String attr) {
+	public static List<String> match(String source, String element, String attr) throws FileNotFoundException, IOException {
+		source=source.replaceAll("image/png\"/", "image/png\" /").replaceAll("image/jpeg\"/", "image/jpeg\"  /").replaceAll("image/gif\"/", "image/gif\"  /");
 		List<String> result = new ArrayList<String>();
 		String reg = "<" + element + "[^<>]*?\\s" + attr + "=['\"]?(.*?)['\"]?(\\s.*?)?>";
 
@@ -107,40 +110,33 @@ public class Myutils {
 	 * 将媒体标签转换为HTML标签
 	 * @param s
 	 * @return
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static String media2Html(String s) {
+	public static String media2Html(String s) throws FileNotFoundException, IOException {
 
 		List<String> hash = Myutils.match(s, "en-media", "hash");
 		List<String> typeTemp = Myutils.match(s, "en-media", "type");
 		
-		Map<String,String> map=new HashMap<String,String>();
+		//Map<String,String> map=new HashMap<String,String>();
 		for(int i=0;i<hash.size();i++){
 			String stype=typeTemp.get(i);
-			if (stype.indexOf("jpeg") != -1) {
-				map.put(hash.get(i), "jpeg");
-			} else if (stype.indexOf("gif") != -1) {
-				map.put(hash.get(i), "gif");
-			} else if (stype.indexOf("png") != -1) {
-				map.put(hash.get(i), "png");
-			}
+			
+			boolean picExist=stype.indexOf("jpeg") != -1 || stype.indexOf("gif") != -1 || stype.indexOf("png") != -1;
+			if (picExist) {
+				String currentHash = hash.get(i);
+				String currentType = stype.replace("image/", "");
+				String reg="<en-media.*?image.*?/>";
+				Matcher m = Pattern.compile(reg).matcher(s);
+				if(m.find()){
+					String oldstring = m.group();
+					String newstring = "<image src=\"" + currentHash + "." + currentType + "\" />";
+					s = s.replace(oldstring, newstring);
+				}			
+			} 
 			
 		}
 		
-		
-		for (String key : map.keySet()) {
-			String currentHash = key;
-			String currentType = map.get(key);
-			String reg="<en-media.*?image.*?/>";
-			Matcher m = Pattern.compile(reg).matcher(s);
-			if(m.find()){
-				String oldstring = m.group();
-				String newstring = "<image src=\"" + currentHash + "." + currentType + "\" />";
-				s = s.replace(oldstring, newstring);
-			}	
-			
-		}
-	
-
 		return s;
 	}
 
@@ -150,8 +146,10 @@ public class Myutils {
 	 * 
 	 * @param content
 	 * @return
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static String content2HTML(String content) {
+	public static String content2HTML(String content) throws FileNotFoundException, IOException {
 		String noteHead="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\r\n\r\n";
 		String jsphead="<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\"%>";
 		content=content.replace(noteHead, jsphead);

@@ -1,5 +1,7 @@
 package test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +16,7 @@ import yx.Operate;
 
 
 public class Test01 {
-	public static String media2Html_2(String s) {
+	public static String media2Html_2(String s) throws FileNotFoundException, IOException {
 
 		List<String> hash = Myutils.match(s, "en-media", "hash");
 		List<String> typeTemp = Myutils.match(s, "en-media", "type");

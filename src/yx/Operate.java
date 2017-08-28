@@ -99,8 +99,15 @@ public class Operate {
 			byte[] resHash = resource.getData().getBodyHash();
 			byte[] resBody = resource.getData().getBody();
 			String bodyHash = Myutils.bytes2HexString(resHash).toLowerCase();
-
-			String path = String.format(filedir + "/%s.png", bodyHash);
+			String path="";
+			if(filetype.indexOf("png")!=-1){
+				path = String.format(filedir + "/%s.png", bodyHash);
+			}else if(filetype.indexOf("jpeg")!=-1){
+				 path = String.format(filedir + "/%s.jpeg", bodyHash);
+			}else if(filetype.indexOf("gif")!=-1){
+				 path = String.format(filedir + "/%s.gif", bodyHash);
+			}
+			
 			utils.Myutils.byte2img(resBody, path);
 		}
 
