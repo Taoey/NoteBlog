@@ -130,7 +130,16 @@ public class Myutils {
 				Matcher m = Pattern.compile(reg).matcher(s);
 				if(m.find()){
 					String oldstring = m.group();
-					String newstring = "<image src=\"" + currentHash + "." + currentType + "\" />";
+					String width="",height="auto";
+					
+					if(oldstring.indexOf("width=\"")!=-1){//有样式
+						 int begin=oldstring.indexOf("width=\"");
+						// System.out.println(begin);
+						 int end=oldstring.indexOf("\"", begin+7);
+						 //System.out.println(end);
+						 width=oldstring.substring(begin+7,end);
+					}
+					String newstring = String.format("<image src=\"%s.%s\" width=\"%s\" height=\"%s\"/>", currentHash,currentType,width,height);
 					s = s.replace(oldstring, newstring);
 				}			
 			} 
