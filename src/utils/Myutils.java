@@ -3,21 +3,21 @@ package utils;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import test.Test03;
 
 public class Myutils {
 
@@ -52,7 +52,10 @@ public class Myutils {
 		File file=new File("");		
 		String sourcePath = file.getAbsolutePath()+"\\static\\pages\\NoteIndex.txt";    //源文件地址
 		sourcePath=sourcePath.replace("bin", "webapps\\ROOT");
-		bre = new BufferedReader(new FileReader(sourcePath));
+		//sourcePath=sourcePath.replace("noteBlog", "noteBlog\\WebContent");
+		
+		InputStreamReader isr = new InputStreamReader(new FileInputStream(sourcePath), "UTF-8");
+		bre = new BufferedReader(isr);
 		
 		pw = new OutputStreamWriter(new FileOutputStream(path), "utf-8");// 确认流的输出文件和编码格式，此过程创建了“test.txt”实例
 
@@ -139,7 +142,7 @@ public class Myutils {
 						 //System.out.println(end);
 						 width=oldstring.substring(begin+7,end);
 					}
-					String newstring = String.format("<image src=\"%s.%s\" width=\"%s\" height=\"%s\"/>", currentHash,currentType,width,height);
+					String newstring = String.format("<image src=\"%s.%s\" width=\"%s\" height=\"%s\" class=\"img-responsive\"/>", currentHash,currentType,width,height);
 					s = s.replace(oldstring, newstring);
 				}			
 			} 
@@ -224,5 +227,30 @@ public class Myutils {
 		return value;
 	}
 
+    /**   
+     * 追加文件：使用FileWriter   
+     *    
+     * @param fileName   文件的绝对路径
+     * @param content   
+     */    
+    public static void addSrring2File(String fileName, String content) {   
+        FileWriter writer = null;  
+        try {     
+            // 打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件     
+            writer = new FileWriter(fileName, true);     
+            writer.write(content);       
+        } catch (IOException e) {     
+            e.printStackTrace();     
+        } finally {     
+            try {     
+                if(writer != null){  
+                    writer.close();     
+                }  
+            } catch (IOException e) {     
+                e.printStackTrace();     
+            }     
+        }   
+    }   
+	
 
 }

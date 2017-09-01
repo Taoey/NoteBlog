@@ -259,7 +259,7 @@ public class Operate {
 		String filedir = Myutils.makedir(note.getGuid());// 根据博客名创建了本地博客目录
 		//System.out.println(filedir);
 		Myutils.string2File(noteContent, filedir + "\\content.html");
-		// 复制index.html到各博客文章（未完成）
+		// 复制index.html到各博客文章
 		Myutils.createNoteIndex(filedir+"\\index.jsp", note.getTitle());
 		Myutils.string2File("", filedir + "\\" + "z-"+note.getTitle()); // 创建博客名标记
 
