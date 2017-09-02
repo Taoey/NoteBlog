@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div id="footer">
+    <div class="container">
+        <div class="copyright text-center">
+            <div class="alist">
+                <span>二十四向风吹过,一切皆空</span>
+                <a href="https://github.com/Taoey" title="GitHub"><i class="iconfont icon-github gly-i " aria-hidden="true" ></i></a>
+                <a href="mailto:swhwtqwer@163.com" title="email"><i class=" iconfont icon-csdn gly-i" aria-hidden="true"></i></a>
+            </div>
+            <span>Welcome to visit my website &copy; TaoeyHuang</span>
+        </div>
+    </div>
+</div>
