@@ -45,7 +45,7 @@ public class Myutils {
 	 * @param title
 	 * @throws IOException
 	 */
-	public static void createNoteIndex(String path,String title)throws IOException{
+	public static void createNoteIndex(String path,String title,String guid)throws IOException{
 		String str = "";
 		BufferedReader bre = null;
 		OutputStreamWriter pw = null;// 定义一个流
@@ -61,6 +61,7 @@ public class Myutils {
 
 		while ((str = bre.readLine()) != null) { // 判断最后一行不存在，为空结束循环
 			str=str.replace("modelTitle", title);
+			str=str.replace("mysid", guid);
 			pw.write(str);// 将要写入文件的内容，写入到新文件
 		}
 		pw.close();// 关闭流
@@ -252,5 +253,6 @@ public class Myutils {
         }   
     }   
 	
+
 
 }

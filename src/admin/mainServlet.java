@@ -40,40 +40,40 @@ public class mainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		//创建日志文件,注意日志文件的生成时间和该Servlet的启动时间相关
-
-		Runnable runnable = new Runnable() {
-			public void run() {
-				// task to run goes here
-				try {
-					String progectName=Myutils.getProperty("projectName");
-					File file = new File("");					
-					String path=file.getAbsolutePath()+"\\"+progectName+"\\logs\\";
-					path=path.replace("bin", "webapps");//把bin目录替换掉
-					
-					Calendar now = Calendar.getInstance();
-					int year=now.get(Calendar.YEAR);
-					int month=(now.get(Calendar.MONTH) + 1);
-					int day=now.get(Calendar.DAY_OF_MONTH);
-					int second=now.get(Calendar.SECOND); //非必要.用于测试
-					
-					String time =""+year+month+day+second;
-
-					String filePath = path + file.separator + "log--" + time + ".txt";
-					File f = new File(filePath);
-					
-					if (!f.exists()) {
-						f.createNewFile();
-					}
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-		// 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
-		service.scheduleAtFixedRate(runnable, 0, 3, TimeUnit.SECONDS); //需修单位改为小时
+//		//创建日志文件,注意日志文件的生成时间和该Servlet的启动时间相关
+//
+//		Runnable runnable = new Runnable() {
+//			public void run() {
+//				// task to run goes here
+//				try {
+//					String progectName=Myutils.getProperty("projectName");
+//					File file = new File("");					
+//					String path=file.getAbsolutePath()+"\\"+progectName+"\\logs\\";
+//					path=path.replace("bin", "webapps");//把bin目录替换掉
+//					
+//					Calendar now = Calendar.getInstance();
+//					int year=now.get(Calendar.YEAR);
+//					int month=(now.get(Calendar.MONTH) + 1);
+//					int day=now.get(Calendar.DAY_OF_MONTH);
+//					int second=now.get(Calendar.SECOND); //非必要.用于测试
+//					
+//					String time =""+year+month+day+second;
+//
+//					String filePath = path + file.separator + "log--" + time + ".txt";
+//					File f = new File(filePath);
+//					
+//					if (!f.exists()) {
+//						f.createNewFile();
+//					}
+//
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		};
+//		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+//		// 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
+//		service.scheduleAtFixedRate(runnable, 0, 3, TimeUnit.SECONDS); //需修单位改为小时
 
 		
 		
@@ -85,7 +85,7 @@ public class mainServlet extends HttpServlet {
 			Operate op;
 			try {
 				op = new Operate();
-				String bookGuid = op.getNoteBookGuid("test");
+				String bookGuid = op.getNoteBookGuid("Myblog");
 				// System.out.println(bookGuid);
 	
 				// 同步设置

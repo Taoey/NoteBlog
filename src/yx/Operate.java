@@ -24,8 +24,6 @@ import com.evernote.edam.type.Notebook;
 import com.evernote.edam.type.Resource;
 import com.evernote.thrift.TException;
 
-import jdbc.NotesDao;
-import utils.JDBCUtil;
 import utils.Myutils;
 
 public class Operate {
@@ -118,13 +116,13 @@ public class Operate {
 	 * 
 	 * @throws Exception
 	 */
-	public void getAllBlogs() throws Exception {
+	public List<Note> getAllBlogs(String bookName) throws Exception {
 		List<Notebook> notebooks = noteStore.listNotebooks();
+		List<Note> notes =null;
 		Notebook blog = null;
 		// search NoteBlog
-		for (Notebook notebook : notebooks) {
-			// System.out.println(notebook);
-			if ("test".equals(notebook.getName())) {
+		for (Notebook notebook : notebooks) {			
+			if (bookName.equals(notebook.getName())) {
 				blog = notebook;
 			}
 		}
@@ -137,15 +135,10 @@ public class Operate {
 			filter.setAscending(true);
 
 			NoteList noteList = noteStore.findNotes(filter, 0, 100);
-			List<Note> notes = noteList.getNotes();
-			// for (Note note : notes) {
-			// getBlog(note.getGuid());
-			// }
-			for (int i = 0; i < notes.size(); i++) {
-				getBlog(notes.get(i).getGuid());
-			}
+			notes = noteList.getNotes();
 
 		}
+		return notes;
 	}
 
 
@@ -208,7 +201,7 @@ public class Operate {
 	}
 
 	/**
-	 * 获取笔记的相关信息
+	 * 获取笔记本中全部笔记的相关信息
 	 * 
 	 * @param notebookGuid
 	 * @return
@@ -235,10 +228,6 @@ public class Operate {
 
 		List<NoteMetadata> noteList = metaList.getNotes();
 
-		// 输出测试
-		// for (NoteMetadata noteMetadata : noteList) {
-		// System.out.println(noteMetadata);
-		// }
 		return noteList;
 	}
 
@@ -257,11 +246,11 @@ public class Operate {
 
 		// 内容处理
 		String filedir = Myutils.makedir(note.getGuid());// 根据博客名创建了本地博客目录
-		//System.out.println(filedir);
-		Myutils.string2File(noteContent, filedir + "\\content.html");
+		File file=new File("");
+		Myutils.string2File(noteContent, filedir +file.separator+"content.html");
 		// 复制index.html到各博客文章
-		Myutils.createNoteIndex(filedir+"\\index.jsp", note.getTitle());
-		Myutils.string2File("", filedir + "\\" + "z-"+note.getTitle()); // 创建博客名标记
+		Myutils.createNoteIndex(filedir+file.separator+"index.jsp", note.getTitle(),note.getGuid());
+		Myutils.string2File("", filedir + file.separator + "z-"+note.getTitle()); // 创建博客名标记
 
 		// 获取资源
 		List<Resource> res = note.getResources();
@@ -302,64 +291,14 @@ public class Operate {
 		}
 	}
 
-//	public static void main(String[] args) throws Exception {
-//		// 获取对应笔记本
-//		Operate op = new Operate();
-//		String bookGuid = op.getNoteBookGuid("test");
-//		// System.out.println(bookGuid);
-//
-//		// 同步设置
-//		int lastUpdataCount = 0;
-//		int currentUpdataCount = 0;
-//
-//		while (true) {
-//			currentUpdataCount = op.getCUC();
-//			if (lastUpdataCount < currentUpdataCount) {// 更新了
-//				System.out.println("yse");
-//				lastUpdataCount = currentUpdataCount;
-//				// 重新获取Note列表
-//				List<NoteMetadata> noteMetadataList = op.getNoteMetadata(bookGuid);
-//
-//				// 与数据库信息对比
-//				
-//				for (int i = 0; i < noteMetadataList.size(); i++) {
-//					NoteMetadata curNoteMetadata = noteMetadataList.get(i);
-//					int condition = NotesDao.getSqlNoteCondition(curNoteMetadata);
-//
-//					if (condition == -1) {						
-//						NotesDao.addNote(curNoteMetadata, 1);// 添加到数据库
-//						op.getBlog(curNoteMetadata.getGuid());// 保存到本地资源
-//					} else if (condition == 1) {
-//						op.deleteNote(curNoteMetadata.getGuid());// 删除原来的资源
-//						op.getBlog(curNoteMetadata.getGuid()); // 重新获取资源
-//						NotesDao.updateNote(curNoteMetadata, 1);//修改数据库数据
-//						
-//					} else {
-//						//只标记该笔记存在
-//						NotesDao.updateIsHave(curNoteMetadata, 1);
-//					}
-//				} // end for
-//				
-//				// 查询数据库中云端不存在的笔记
-//				List<String> invalidGuidList=NotesDao.getNoHaveNotes();
-//				// 根据查询结果删除本地的资源
-//				if(invalidGuidList!=null){
-//					for(int i=0;i<invalidGuidList.size();i++){
-//						op.deleteNote(invalidGuidList.get(i));
-//						NotesDao.deleteNote(invalidGuidList.get(i));
-//					}
-//				}
-//				
-//				
-//				//将所有笔记标记为0
-//				NotesDao.updateAllIsHave(0);
-//				
-//			} else {// 没更新
-//				System.out.println("No");
-//			}
-//			Thread.sleep(1000 * 30 * 1);
-//		}
-//
-//	}
+	public Note getNote(String noteGuid) throws EDAMUserException, EDAMSystemException, EDAMNotFoundException, TException {
+		Note note = noteStore.getNote(noteGuid, true, true, true, true);
+		
+		return note;
+	}
 
+	public List<String> getNoteTagNames(String Guid) throws EDAMUserException, EDAMSystemException, EDAMNotFoundException, TException {
+		List<String> l=noteStore.getNoteTagNames(Guid);
+		return l;
+	}
 }

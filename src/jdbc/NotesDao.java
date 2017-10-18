@@ -1,5 +1,11 @@
 package jdbc;
-
+/**
+ * 操作记录：
+ * 20170116-0950：修改获取到的note的URL访问方式（绝对->相对），放弃domain方式（数据库数据：http://hwtblog.cn/blogs/65c16975-2784-4d9d-9257-7fd238443eab  到/blogs/65c16975-2784-4d9d-9257-7fd238443eab ）
+ * 20171017-1512：添加模糊查询功能，为实现主页的搜索框功能
+ * 
+ * 
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,7 +43,7 @@ public class NotesDao {
 			File file=new File("");
 			connection=JDBCUtil.getConnection();
 			String sql="insert into notes(_title,_guid,_tagsGuid,_isUpdated,_url,_isHave) values(?,?,?,?,?,?)";
-			String url=domain+"blogs/"+noteMetadata.getGuid();
+			String url=file.separator+"blogs"+file.separator+noteMetadata.getGuid();
 			String tags="";
 			
 			if(noteMetadata.isSetTagGuids()){
@@ -268,6 +274,37 @@ public class NotesDao {
 		
 		return myNoteList;
 	}
+	
+	
+	public static List<MyNote> getNotes(String searchStr) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException{
+		List<MyNote>  myNoteList=new ArrayList<MyNote>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="select * from notes where _title like '%"+searchStr+"%'";
+		statement=connection.createStatement();	
+		
+		resultSet=statement.executeQuery(sql);
+		
+		while (resultSet != null && resultSet.next()) {
+			
+			String title = resultSet.getString("_title");
+			String guid = resultSet.getString("_guid");
+			String tagsGuid = resultSet.getString("_tagsGuid");
+			String url = resultSet.getString("_url");
+			myNoteList.add(new MyNote(title,guid,tagsGuid,url));
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return myNoteList;
+			
+
+	}
+	
+	
+	
+	
+	
 	
 	//	public static void main(String[] args) throws Exception {
 //		Operate op=new Operate();
