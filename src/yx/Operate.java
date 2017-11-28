@@ -296,7 +296,15 @@ public class Operate {
 		
 		return note;
 	}
-
+	/**
+	 * 根据笔记名字获取笔记标签列表
+	 * @param Guid
+	 * @return
+	 * @throws EDAMUserException
+	 * @throws EDAMSystemException
+	 * @throws EDAMNotFoundException
+	 * @throws TException
+	 */
 	public List<String> getNoteTagNames(String Guid) throws EDAMUserException, EDAMSystemException, EDAMNotFoundException, TException {
 		List<String> l=noteStore.getNoteTagNames(Guid);
 		return l;

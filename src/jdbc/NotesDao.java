@@ -246,6 +246,7 @@ public class NotesDao {
 		
 		
 	}
+	
 	/**
 	 * 获取所有note数据
 	 * @return
@@ -275,7 +276,15 @@ public class NotesDao {
 		return myNoteList;
 	}
 	
-	
+	/**
+	 *根据searchStr 搜素相应笔记
+	 * @param searchStr
+	 * @return myNoteList 笔记列表
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<MyNote> getNotes(String searchStr) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException{
 		List<MyNote>  myNoteList=new ArrayList<MyNote>();
 		
