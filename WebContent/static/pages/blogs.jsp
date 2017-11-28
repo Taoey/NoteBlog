@@ -1,7 +1,7 @@
 <%@page import="
-jdbc.NotesDao,
+dao.NoteDao,
 java.util.*,
-javabean.MyNote
+javabean.Note
 
 "%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -156,23 +156,22 @@ ul, ol, li {
 		<div class="col-md-9 col-xs-12">
 			<div class="blog-border side-margin">
 				<%
-					List<MyNote> notesList = NotesDao.getAllNotes();
+					List<Note> notesList = NoteDao.getAllNotes();
 					if (notesList != null) {
 						for (int i = 0; i < notesList.size(); i++) {
-							String title = notesList.get(i).getTitle();
-							String url = notesList.get(i).getUrl();
-							String tags = notesList.get(i).getTagsGuid();
-							String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
+							String title = notesList.get(i).getTitle();	
+							String guid = notesList.get(i).getGuid();							
+							//String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
-							out.println("<a href=\"" + url + "\" target=\"_blank\">" + title + "</a>");//title
+							out.println("<a href=\"/../blogs/" + guid + "\" target=\"_blank\">" + title + "</a>");//title
 							out.println("</div>");
 							out.println("<div class=\"blog-tags\">");
 							out.println("<ul>");
 							out.println("<li><span class=\"glyphicon glyphicon-time\"></span>");
 							out.println("<span>#time#</span></li>"); //time
 							out.println("<li><span class=\"glyphicon glyphicon-tag\"></span>");
-							out.println("<a href=\"###\">" + tags + "</a></li>"); //tags
+							out.println("<a href=\"###\">" +"tags未编写"+ "</a></li>"); //tags
 							out.println("</ul>");
 							out.println("</div></div>");
 

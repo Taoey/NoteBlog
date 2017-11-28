@@ -9,6 +9,6 @@
 <body>
 
 
-<a href="${pageContext.request.contextPath }/mainServlet">启动同步</a>
+<a href="${pageContext.request.contextPath }/AdminServlet">启动同步</a>
 </body>
 </html>
