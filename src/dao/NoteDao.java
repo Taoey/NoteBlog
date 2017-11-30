@@ -247,9 +247,7 @@ public class NoteDao {
 		while (resultSet != null && resultSet.next()) {
 			
 			String title = resultSet.getString("_title");
-			String guid = resultSet.getString("_guid");
-			String tagsGuid = resultSet.getString("_tagsGuid");
-			String url = resultSet.getString("_url");
+			String guid = resultSet.getString("_guid");					
 			myNoteList.add(new Note(title,guid));
 		}
 		JDBCUtil.close(resultSet, preparedStatement, connection);

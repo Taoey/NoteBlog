@@ -163,12 +163,12 @@ ul, ol, li {
 					List<Note> notesList = NoteDao.getNotes(wd);
 					if (notesList != null) {
 						for (int i = 0; i < notesList.size(); i++) {
-							String title = notesList.get(i).getTitle();							
+							String title = notesList.get(i).getTitle();						
 							String guid = notesList.get(i).getGuid();
 							//String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
-							out.println("<a href=\"blogs" + guid + "\" target=\"_blank\">" + title + "</a>");//title
+							out.println("<a href=\"/../blogs/" + guid + "\" target=\"_blank\">" + title + "</a>");//title
 							out.println("</div>");
 							out.println("<div class=\"blog-tags\">");
 							out.println("<ul>");
