@@ -19,6 +19,7 @@ import com.evernote.edam.notestore.SyncState;
 import com.evernote.edam.type.Note;
 import com.evernote.edam.type.Notebook;
 import com.evernote.edam.type.Resource;
+import com.evernote.edam.type.Tag;
 import com.evernote.thrift.TException;
 
 public class NoteUtils {
@@ -208,6 +209,18 @@ public class NoteUtils {
 		}
 	}
 
-	
+	/**
+	 * 根据TagGuid获取tag名字
+	 * @param tagGuid
+	 * @return
+	 * @throws EDAMUserException
+	 * @throws EDAMSystemException
+	 * @throws EDAMNotFoundException
+	 * @throws TException
+	 */
+	public static String getTag(String tagGuid) throws EDAMUserException, EDAMSystemException, EDAMNotFoundException, TException {
+		
+		return noteStore.getTag(tagGuid).getName();
+	}
 	
 }

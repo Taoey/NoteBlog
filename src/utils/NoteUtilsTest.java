@@ -44,7 +44,11 @@ public class NoteUtilsTest {
 		System.out.println("DONE");
 	}
 	
-	
+	@Test
+	public void getTag() throws Exception{
+		String s= NoteUtils.getTag("540e9199-bfb9-4208-90ea-ffc62d171b28");
+		System.out.println(s);
+	}
 	
 	
 	

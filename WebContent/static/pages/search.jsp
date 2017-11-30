@@ -157,11 +157,10 @@ ul, ol, li {
 			<div class="blog-border side-margin">
 				<%
 	               request.setCharacterEncoding("utf-8");
-			       String wd = request.getParameter("wd");
-			       
+			       String wd = request.getParameter("wd");			       
 				
 					List<Note> notesList = NoteDao.getNotes(wd);
-					if (notesList != null) {
+					if (notesList != null && notesList.size()!=0) {
 						for (int i = 0; i < notesList.size(); i++) {
 							String title = notesList.get(i).getTitle();						
 							String guid = notesList.get(i).getGuid();

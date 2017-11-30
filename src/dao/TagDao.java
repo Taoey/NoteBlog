@@ -45,4 +45,28 @@ public class TagDao {
 		
 	}
 	
+	/**
+	 * 
+	 * @param tagGuid
+	 * @return 1:有该标签  0:无该标签
+	 * @throws Exception
+	 */
+	public static int isExist(String tagGuid) throws Exception{
+		
+			connection=JDBCUtil.getConnection();
+			String sql = "select * from tag where _guid=\""+ tagGuid+"\";";//注意容易写错
+			
+			preparedStatement=connection.prepareStatement(sql);
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			
+			if(resultSet.next()) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+			
+
+	}
 }
