@@ -38,6 +38,11 @@ public class NoteUtilsTest {
 	
 	
 	
+	@Test
+	public void getBlog() throws Exception{
+		NoteUtils.getBlog("880a7dba-f36e-4358-b98b-75997e779422");
+		System.out.println("DONE");
+	}
 	
 	
 	
