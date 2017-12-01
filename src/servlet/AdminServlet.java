@@ -120,8 +120,8 @@ public class AdminServlet extends HttpServlet {
 								
 								
 								
-								//NoteUtils.deleteNote(curNoteMetadata.getGuid());// 删除原来的资源
-								//NoteUtils.getBlog(curNoteMetadata.getGuid()); // 重新获取资源
+								NoteUtils.deleteNote(curNoteMetadata.getGuid());// 删除原来的资源
+								NoteUtils.getBlog(curNoteMetadata.getGuid()); // 重新获取资源
 								NoteDao.updateNote(curNoteMetadata, 1);//修改数据库数据
 								
 							} else {//该条笔记没有更新,但是位置可能发生了变化(从一个笔记本移动到了另一个笔记本)
@@ -190,7 +190,7 @@ public class AdminServlet extends HttpServlet {
 					} else {// 没更新
 						System.out.println("No");
 					}
-					Thread.sleep(1000 * 30 * 1);
+					Thread.sleep(1000 * 40 * 1);
 				}
 	
 			
