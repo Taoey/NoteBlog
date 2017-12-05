@@ -6,7 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import javabean.Note;
+import javabean.Tag;
 import utils.JDBCUtil;
 
 public class TagDao {
@@ -46,7 +50,7 @@ public class TagDao {
 	}
 	
 	/**
-	 * 
+	 * 查找一个标签是否存在
 	 * @param tagGuid
 	 * @return 1:有该标签  0:无该标签
 	 * @throws Exception
@@ -68,5 +72,32 @@ public class TagDao {
 			}
 			
 
+	}
+
+	/**
+	 * 获取所有标签
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Tag> getAllTag()throws Exception{
+		List<Tag> tagList=new ArrayList<Tag>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="select * from tag";
+		statement=connection.createStatement();		
+		resultSet = statement.executeQuery(sql);
+		while (resultSet != null && resultSet.next()) {
+			
+			String guid = resultSet.getString("_guid");
+			String name = resultSet.getString("_name");	
+			
+			tagList.add(new Tag(guid,name));
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return tagList;
+		
+		
 	}
 }

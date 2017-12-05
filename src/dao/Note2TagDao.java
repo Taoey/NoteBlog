@@ -94,6 +94,41 @@ public class Note2TagDao {
 		
 	}
 	
+	/**
+	 * 获得和NoteGuid 全部相关的关系
+	 * @param _noteGuid
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<String> getAllTagGuid2(String _tagGuid)throws Exception{
+
+		List<String>  tagGuidList=new ArrayList<String>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="select _noteGuid from note2Tag where _tagGuid=\""+_tagGuid+"\"";
+		statement=connection.createStatement();		
+		resultSet = statement.executeQuery(sql);
+		while (resultSet != null && resultSet.next()) {
+			
+			String tagGuid = resultSet.getString("_noteGuid");			
+			
+			tagGuidList.add(tagGuid);
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return tagGuidList;
+	
+		
+	}
+	
+	
+	/**
+	 * 删除一条关系
+	 * @param noteGuid
+	 * @param tagGuid
+	 * @throws Exception
+	 */
 	public static void delete(String noteGuid, String tagGuid) throws Exception {
 		connection=JDBCUtil.getConnection();
 		String sql="delete from note2Tag where _noteGuid=? and _tagGuid=?";
@@ -106,4 +141,7 @@ public class Note2TagDao {
 		JDBCUtil.close(resultSet, preparedStatement, connection);		
 		
 	}
+
+	
+
 }
