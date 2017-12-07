@@ -54,12 +54,6 @@
             <div class="panel-heading">
                 <div class="blog_header">
                     <h3>modelTitle</h3>
-                    <span class="clearfix"></span>
-                    <ul>
-                        <li>分类标签：
-                            <a href="/blog/?tag=8" target=_blank>Django</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
 

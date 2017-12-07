@@ -161,6 +161,9 @@ ul, ol, li {
 				<%
 	               request.setCharacterEncoding("utf-8");
 			       String tagGuid = request.getParameter("tagGuid");
+			       if("".equals(tagGuid)){
+			    	   
+			       }
 					List<Note> notesList = MultiDao.getAllNoteByTag(tagGuid);
 					if (notesList != null) {
 						for (int i = 0; i < notesList.size(); i++) {
@@ -175,8 +178,28 @@ ul, ol, li {
 							out.println("<ul>");
 							out.println("<li><span class=\"glyphicon glyphicon-time\"></span>");
 							out.println("<span>#time#</span></li>"); //time
-							out.println("<li><span class=\"glyphicon glyphicon-tag\"></span>");
-							out.println("<a href=\"###\">" +"tags未编写"+ "</a></li>"); //tags
+							
+							
+							//获取对应笔记的标签名和标签guid
+							List<Tag> tList=MultiDao.getAllTagByNote(guid);
+							if(tList!=null && !tList.isEmpty()){
+								for(int j=0;j<tList.size();j++){
+									String tagGuid2 = tList.get(j).getGuid();
+									String name = tList.get(j).getName();
+									
+									out.println("<li>");
+									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"/static/pages/tagList.jsp"));
+									String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",tagGuid2);
+									String tagShow =String.format("<span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a>","f"+i+"f"+j,name);					
+									out.println(input);
+									out.println(tagShow);
+									out.println("</form>");
+									out.println("</li>");				
+																	
+								}
+							}
+							
+							
 							out.println("</ul>");
 							out.println("</div></div>");
 

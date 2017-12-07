@@ -1,3 +1,4 @@
+<%@page import="dao.MultiDao"%>
 <%@page import="
 dao.NoteDao,
 dao.TagDao,
@@ -162,7 +163,7 @@ ul, ol, li {
 					if (notesList != null) {
 						for (int i = 0; i < notesList.size(); i++) {
 							String title = notesList.get(i).getTitle();	
-							String guid = notesList.get(i).getGuid();							
+							String guid = notesList.get(i).getGuid();					
 							//String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
@@ -172,8 +173,26 @@ ul, ol, li {
 							out.println("<ul>");
 							out.println("<li><span class=\"glyphicon glyphicon-time\"></span>");
 							out.println("<span>#time#</span></li>"); //time
-							out.println("<li><span class=\"glyphicon glyphicon-tag\"></span>");
-							out.println("<a href=\"###\">" +"tags未编写"+ "</a></li>"); //tags
+							
+							//获取对应笔记的标签名和标签guid
+							List<Tag> tList=MultiDao.getAllTagByNote(guid);
+							if(tList!=null && !tList.isEmpty()){
+								for(int j=0;j<tList.size();j++){
+									String tagGuid = tList.get(j).getGuid();
+									String name = tList.get(j).getName();
+									
+									out.println("<li>");
+									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"/static/pages/tagList.jsp"));
+									String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",tagGuid);
+									String tagShow =String.format("<span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a>","f"+i+"f"+j,name);					
+									out.println(input);
+									out.println(tagShow);
+									out.println("</form>");
+									out.println("</li>");				
+																	
+								}
+							}
+
 							out.println("</ul>");
 							out.println("</div></div>");
 
@@ -194,10 +213,10 @@ ul, ol, li {
 					if (tagList != null&& !tagList.isEmpty()) {
 						for (int i = 0; i < tagList.size(); i++) {
 							String guid = tagList.get(i).getGuid();	
-							String name = tagList.get(i).getName();
-							String tagShow =String.format("<li><span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a></li>","f"+i,name);						
+							String name = tagList.get(i).getName();								
 							out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"/static/pages/tagList.jsp"));
 							String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",guid);
+							String tagShow =String.format("<li><span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a></li>","f"+i,name);					
 							out.println(input);
 							out.println(tagShow);
 							out.println("</form>");							
