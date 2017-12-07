@@ -256,7 +256,34 @@ public class NoteDao {
 			
 
 	}
-
+	/**
+	 * 随机获取10条笔记记录
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public static List<Note> getRandNotes() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException{
+		List<Note>  myNoteList=new ArrayList<Note>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="SELECT * FROM note  ORDER BY  RAND() LIMIT 10";
+		statement=connection.createStatement();	
+		
+		resultSet=statement.executeQuery(sql);
+		
+		while (resultSet != null && resultSet.next()) {
+			
+			String title = resultSet.getString("_title");
+			String guid = resultSet.getString("_guid");					
+			myNoteList.add(new Note(title,guid));
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return myNoteList;
+	}
 	
 	
 }

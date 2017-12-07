@@ -173,10 +173,18 @@ ul, ol, li {
 				</div>
 				<div class="col-sm-4">
 					<div class="home-block">
-						<h4 class='home-block-title'>最新发表</h4>
+						<h4 class='home-block-title'>随机推荐</h4>
 						<ul class="list">
-
-							<li><a href="/blog/188" target=_blank>初步使用tastypie的体悟（三）</a></li>
+							<%
+								List<Note> nList=NoteDao.getRandNotes();
+								if(nList!=null && !nList.isEmpty()){
+									for(int i=0;i<nList.size();i++){
+										String noteGuid = nList.get(i).getGuid();
+										String noteTitle = nList.get(i).getTitle();
+										out.println("<li><a href=\"/../blogs/" + noteGuid + "\" target=\"_blank\">" + noteTitle + "</a></li>");//title
+									}
+								}
+							%>							
 						</ul>
 					</div>
 				</div>

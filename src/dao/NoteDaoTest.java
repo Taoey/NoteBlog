@@ -1,8 +1,15 @@
 package dao;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.junit.Test;
 
 import com.evernote.edam.notestore.NoteMetadata;
+
+import javabean.Note;
 
 public class NoteDaoTest {
 	
@@ -14,6 +21,11 @@ public class NoteDaoTest {
 		n.setTitle("test");
 		n.setUpdated(122);
 		NoteDao.addNote(n, 1);
+	}
+	@Test
+	public void getRandNotes() throws Exception{
+		List<Note> nList = NoteDao.getRandNotes();
+		System.out.println(nList.size());
 	}
 	
 	
