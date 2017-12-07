@@ -3,8 +3,9 @@
 dao.NoteDao,
 dao.MultiDao,
 java.util.*,
-javabean.Note
-
+javabean.Note,
+javabean.Tag,
+dao.TagDao
 "%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -191,69 +192,26 @@ ul, ol, li {
 		
 		<div class="col-md-3 col-xs-12  ">
 			<div class="side-list side-margin  blog-border">
-				<h4>
+				<h4 style="color:#7c827f">
 					<span class="glyphicon glyphicon-book"></span> 博客标签
 				</h4>
 				<ul>
-
-					<li><a href="/blog/24" target="_blank">利用Eval函数，简单实现回调机制</a></li>
-
-					<li><a href="/blog/23" target="_blank">Access建表规范总结(6)：最小信息</a>
-					</li>
-
-					<li><a href="/blog/44" target="_blank">以图搜图(二)：Python实现pHash算法</a>
-					</li>
-
-					<li><a href="/blog/81" target="_blank">Django处理同名url参数</a></li>
-
-					<li><a href="/blog/116" target="_blank">Excel公式新手学习推荐</a></li>
-
-					<li><a href="/blog/170" target="_blank">Python实现快速排序算法</a></li>
-
-					<li><a href="/blog/100" target="_blank">我的网站搭建(第37天)
-							上传图片加水印</a></li>
-
-					<li><a href="/blog/101" target="_blank">C#的序列化和反序列化</a></li>
-
-					<li><a href="/blog/168" target="_blank">我的网站搭建(第54天)
-							Celery异步发送邮件</a></li>
-
-					<li><a href="/blog/134" target="_blank">我的网站搭建(第46天) 在线头像</a>
-					</li>
-
-				</ul>
-			</div>
-			<div class="side-list  side-margin blog-border ">
-				<h4>
-					<span class="glyphicon glyphicon-book"></span> 博客标签
-				</h4>
-				<ul>
-
-					<li><a href="/blog/24" target="_blank">利用Eval函数，简单实现回调机制</a></li>
-
-					<li><a href="/blog/23" target="_blank">Access建表规范总结(6)：最小信息</a>
-					</li>
-
-					<li><a href="/blog/44" target="_blank">以图搜图(二)：Python实现pHash算法</a>
-					</li>
-
-					<li><a href="/blog/81" target="_blank">Django处理同名url参数</a></li>
-
-					<li><a href="/blog/116" target="_blank">Excel公式新手学习推荐</a></li>
-
-					<li><a href="/blog/170" target="_blank">Python实现快速排序算法</a></li>
-
-					<li><a href="/blog/100" target="_blank">我的网站搭建(第37天)
-							上传图片加水印</a></li>
-
-					<li><a href="/blog/101" target="_blank">C#的序列化和反序列化</a></li>
-
-					<li><a href="/blog/168" target="_blank">我的网站搭建(第54天)
-							Celery异步发送邮件</a></li>
-
-					<li><a href="/blog/134" target="_blank">我的网站搭建(第46天) 在线头像</a>
-					</li>
-
+				<%
+					List<Tag> tagList=TagDao.getAllTag();
+					if (tagList != null&& !tagList.isEmpty()) {
+						for (int i = 0; i < tagList.size(); i++) {
+							String guid = tagList.get(i).getGuid();	
+							String name = tagList.get(i).getName();
+							String tagShow =String.format("<li><span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a></li>","f"+i,name);						
+							out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"/static/pages/tagList.jsp"));
+							String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",guid);
+							out.println(input);
+							out.println(tagShow);
+							out.println("</form>");							
+						}
+					}
+					
+				%>	
 				</ul>
 			</div>
 		</div>

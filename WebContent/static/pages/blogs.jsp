@@ -180,31 +180,6 @@ ul, ol, li {
 						}
 					}
 				%>
-
-				<!-- <div class="blog-item">
-                <div class="blog-title">
-                    <a href="" target="_blank">######</a>
-                </div>
-                <div class="blog_descipt">
-               		 博客描述 ###
-                </div>
-                <div class="blog-tags">
-                    <ul>
-                        <li>
-                            <span class="glyphicon glyphicon-time"></span>
-                            <span>#time#</span>
-                        </li>
-                        <li>
-                            <span class="glyphicon glyphicon-tag"></span>
-                            <a href="###">###</a>
-                        </li>
-
-
-
-                    </ul>
-                </div>
-            </div> -->
-
 			</div>
 		</div>
 		
