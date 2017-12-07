@@ -154,7 +154,8 @@ ul, ol, li {
 	</div>
 
 
-	<div class="container">		
+	<div class="container">
+		<div class="col-md-9 col-xs-12">
 			<div class="blog-border side-margin">
 				<%
 	               request.setCharacterEncoding("utf-8");
@@ -182,32 +183,11 @@ ul, ol, li {
 					}
 				%>
 
-				<!--             <div class="blog-item">
-                <div class="blog-title">
-                    <a href="" target="_blank">######</a>
-                </div>
-                <div class="blog_descipt">
-               		 博客描述 ###
-                </div>
-                <div class="blog-tags">
-                    <ul>
-                        <li>
-                            <span class="glyphicon glyphicon-time"></span>
-                            <span>#time#</span>
-                        </li>
-                        <li>
-                            <span class="glyphicon glyphicon-tag"></span>
-                            <a href="###">###</a>
-                        </li>
-
-
-
-                    </ul>
-                </div>
-            </div> -->
-
+			
 			</div>
 		</div>
+			
+
 		
 		<div class="col-md-3 col-xs-12  ">
 			<div class="side-list side-margin  blog-border">
