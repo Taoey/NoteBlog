@@ -1,3 +1,12 @@
+<%@page import="
+dao.NoteDao,
+dao.TagDao,
+dao.Note2TagDao,
+java.util.*,
+javabean.Note,
+javabean.Tag
+
+"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -143,43 +152,22 @@ ul, ol, li {
 					<div class="home-block">
 						<h4 class='home-block-title'>博客分类</h4>
 						<ul class="list">
-
-							<li><a href="/blog/?tag=1" target=_blank>我的网站搭建</a> <span>(56)</span>
-							</li>
-
-							<li><a href="/blog/?tag=6" target=_blank>Python</a> <span>(31)</span>
-							</li>
-
-							<li><a href="/blog/?tag=8" target=_blank>Django</a> <span>(24)</span>
-							</li>
-
-							<li><a href="/blog/?tag=2" target=_blank>Excel</a> <span>(18)</span>
-							</li>
-
-							<li><a href="/blog/?tag=10" target=_blank>VSTO</a> <span>(15)</span>
-							</li>
-
-							<li><a href="/blog/?tag=3" target=_blank>数据库</a> <span>(11)</span>
-							</li>
-
-							<li><a href="/blog/?tag=12" target=_blank>机器学习</a> <span>(11)</span>
-							</li>
-
-							<li><a href="/blog/?tag=4" target=_blank>vb/vba</a> <span>(8)</span>
-							</li>
-
-							<li><a href="/blog/?tag=7" target=_blank>树莓派&amp;硬件</a> <span>(5)</span>
-							</li>
-
-							<li><a href="/blog/?tag=9" target=_blank>Linux</a> <span>(5)</span>
-							</li>
-
-							<li><a href="/blog/?tag=11" target=_blank>Web前端</a> <span>(5)</span>
-							</li>
-
-							<li><a href="/blog/?tag=5" target=_blank>C#</a> <span>(3)</span>
-							</li>
-
+							<%
+								List<Tag> tagList=TagDao.getAllTag();
+								if (tagList != null&& !tagList.isEmpty()) {
+									for (int i = 0; i < tagList.size(); i++) {
+										String guid = tagList.get(i).getGuid();	
+										String name = tagList.get(i).getName();						
+										out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"/static/pages/tagList.jsp"));
+										String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",guid);
+										String tagShow =String.format("<li><a  href=\"javascript:document:%s.submit();\">&nbsp%s<span>(%s)</span></a></li>","f"+i,name,Note2TagDao.getNoteCount(guid));					
+										out.println(input);
+										out.println(tagShow);
+										out.println("</form>");							
+									}
+								}
+								
+							%>
 						</ul>
 					</div>
 				</div>
@@ -189,78 +177,10 @@ ul, ol, li {
 						<ul class="list">
 
 							<li><a href="/blog/188" target=_blank>初步使用tastypie的体悟（三）</a></li>
-
-							<li><a href="/blog/187" target=_blank>充分利用Excel的布尔值</a></li>
-
-							<li><a href="/blog/185" target=_blank>初步使用tastypie的体悟（二）</a></li>
-
-							<li><a href="/blog/184" target=_blank>初步使用tastypie的体悟（一）</a></li>
-
-							<li><a href="/blog/183" target=_blank>Excel数组公式入门</a></li>
-
-							<li><a href="/blog/182" target=_blank>Django测试驱动开发</a></li>
-
-							<li><a href="/blog/181" target=_blank>scp远程传输文件命令</a></li>
-
-							<li><a href="/blog/180" target=_blank>我的网站搭建(第56天)
-									用户登录注册信息加密</a></li>
-
-							<li><a href="/blog/179" target=_blank>Django模板设置全局变量(默认变量)</a></li>
-
-							<li><a href="/blog/178" target=_blank>Django拆分app为多个小app</a></li>
-
-							<li><a href="/blog/177" target=_blank>ui-router使用ocLazyLoad加载js</a></li>
-
-							<li><a href="/blog/176" target=_blank>解决python安装pycurl的问题</a></li>
-
-							<li><a href="/blog/175" target=_blank>Excel常用的字符串公式</a></li>
-
-							<li><a href="/blog/174" target=_blank>我的网站搭建(第55天)
-									站内消息通知</a></li>
-
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="home-block">
-						<h4 class='home-block-title'>随机推荐</h4>
-						<ul class="list">
 
-							<li><a href="/blog/91" target=_blank>UEditor使用prettify.js处理代码高亮</a></li>
-
-							<li><a href="/blog/119" target=_blank>我的网站搭建(第42天)
-									添加公告和打赏</a></li>
-
-							<li><a href="/blog/164" target=_blank>Django
-									Celery定时任务和时间设置</a></li>
-
-							<li><a href="/blog/97" target=_blank>VSTO详细打包过程</a></li>
-
-							<li><a href="/blog/130" target=_blank>VSTO窗体在Word内弹窗置顶</a></li>
-
-							<li><a href="/blog/1" target=_blank>我的网站搭建(第1天) Hello
-									Django</a></li>
-
-							<li><a href="/blog/66" target=_blank>Excel优雅的Max函数和Min函数</a></li>
-
-							<li><a href="/blog/81" target=_blank>Django处理同名url参数</a></li>
-
-							<li><a href="/blog/118" target=_blank>VSTO中Excel添加事件</a></li>
-
-							<li><a href="/blog/20" target=_blank>Access建表规范总结(3)：主子表拆分</a></li>
-
-							<li><a href="/blog/10" target=_blank>Access
-									vba导出数据到Excel方法总结</a></li>
-
-							<li><a href="/blog/137" target=_blank>机器学习06：朴素贝叶斯理论知识</a></li>
-
-							<li><a href="/blog/175" target=_blank>Excel常用的字符串公式</a></li>
-
-							<li><a href="/blog/29" target=_blank>Python字符串处理方法总结</a></li>
-
-						</ul>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

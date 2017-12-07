@@ -31,4 +31,9 @@ public class Note2TagDaoTest {
 	public void delete() throws Exception {
 		Note2TagDao.delete("5c50c8f6-7ea0-4546-b071-6d4d778772f9", "540e9199-bfb9-4208-90ea-ffc62d171b28");
 	}
+	@Test
+	public void getNoteCount() throws Exception{
+		int count = Note2TagDao.getNoteCount("540e9199-bfb9-4208-90ea-ffc62d171b28");
+		System.out.println(count);
+	}
 }

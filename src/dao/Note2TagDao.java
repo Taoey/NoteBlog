@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +97,7 @@ public class Note2TagDao {
 	
 	/**
 	 * 获得和NoteGuid 全部相关的关系
-	 * @param _noteGuid
+	 * @param _tagGuid
 	 * @return
 	 * @throws Exception
 	 */
@@ -141,7 +142,29 @@ public class Note2TagDao {
 		JDBCUtil.close(resultSet, preparedStatement, connection);		
 		
 	}
-
+	
+	/**
+	 * 获取一个标签的相关笔记的数量
+	 * @param tagGuid
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public static int getNoteCount(String tagGuid) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		int noteCount=0;
+		connection=JDBCUtil.getConnection();
+		
+		String sql=String.format("SELECT COUNT(_noteGuid) AS _noteCount FROM note2tag WHERE _tagGuid='%s'", tagGuid);
+		statement=connection.createStatement();		
+		resultSet = statement.executeQuery(sql);
+		while (resultSet != null && resultSet.next()) {			
+			noteCount = resultSet.getInt("_noteCount");				
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);		
+		return noteCount;
+	}
 	
 
 }
