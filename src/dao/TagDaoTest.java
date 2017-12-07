@@ -1,5 +1,8 @@
 package dao;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,5 +27,10 @@ public class TagDaoTest {
 		List<Tag> tagList=TagDao.getAllTag();
 		System.out.println(tagList.get(0).getName());
 		
+	}
+	@Test
+	public void getTopTags() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		List<Tag> tagList=TagDao.getTopTags();
+		System.out.println(tagList.get(0).getName());
 	}
 }

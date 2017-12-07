@@ -153,7 +153,7 @@ ul, ol, li {
 						<h4 class='home-block-title'>博客分类</h4>
 						<ul class="list">
 							<%
-								List<Tag> tagList=TagDao.getAllTag();
+								List<Tag> tagList=TagDao.getTopTags();
 								if (tagList != null&& !tagList.isEmpty()) {
 									for (int i = 0; i < tagList.size(); i++) {
 										String guid = tagList.get(i).getGuid();	

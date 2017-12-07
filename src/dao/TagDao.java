@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,5 +101,31 @@ public class TagDao {
 		
 		
 	}
-	
+	/**
+	 * 获取顶端10条标签
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public static List<Tag> getTopTags() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException{
+		List<Tag> tagList=new ArrayList<Tag>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="SELECT * FROM tag LIMIT 10";
+		statement=connection.createStatement();		
+		resultSet = statement.executeQuery(sql);
+		while (resultSet != null && resultSet.next()) {
+			
+			String guid = resultSet.getString("_guid");
+			String name = resultSet.getString("_name");	
+			
+			tagList.add(new Tag(guid,name));
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return tagList;
+	}
 }
