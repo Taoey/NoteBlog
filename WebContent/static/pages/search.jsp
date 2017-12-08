@@ -4,7 +4,7 @@ dao.Note2TagDao,
 java.util.*,
 javabean.Note,
 dao.MultiDao,
-java.util.*,
+utils.Myutils,
 javabean.Tag,
 dao.TagDao
 
@@ -17,6 +17,8 @@ dao.TagDao
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>搜索结果</title>
+<link type="text/css" rel="stylesheet" href="../tctip/css/myRewards.css">
+
 
 <%@include file="../includes/header.txt"%>
 <%@include file="../includes/googleUA.txt"%>
@@ -264,7 +266,9 @@ ul, ol, li {
 
 
 	<%@include file="../includes/footer.txt"%>
-
+	<!-- 打赏插件 -->
+	<%@include file="../includes/tctip.txt" %>
+	<script src="../tctip/js/tctip.min.js"></script>
 </body>
 
 

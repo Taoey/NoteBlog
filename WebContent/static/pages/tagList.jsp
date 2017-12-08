@@ -3,6 +3,7 @@
 dao.NoteDao,
 dao.MultiDao,
 java.util.*,
+utils.Myutils,
 javabean.Note,
 javabean.Tag,
 dao.TagDao
@@ -15,6 +16,7 @@ dao.TagDao
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>hwt</title>
+<link type="text/css" rel="stylesheet" href="../tctip/css/myRewards.css">
 
 <%@include file="../includes/header.txt"%>
 <%@include file="../includes/googleUA.txt"%>
@@ -241,7 +243,8 @@ ul, ol, li {
 
 
 	<%@include file="../includes/footer.txt"%>
-
+	<%@include file="../includes/tctip.txt" %>
+	<script src="../tctip/js/tctip.min.js"></script>
 </body>
 
 

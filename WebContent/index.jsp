@@ -1,3 +1,4 @@
+<%@page import="utils.Myutils"%>
 <%@page import="
 dao.NoteDao,
 dao.TagDao,
@@ -14,7 +15,7 @@ javabean.Tag
 <head>
 <meta charset="UTF-8">
 <title>hwt</title>
-
+<link type="text/css" rel="stylesheet" href="static/tctip/css/myRewards.css">
 <%@ include file="static/includes/header.txt" %>
 <%@include file="static/includes/googleUA.txt"%>
 
@@ -118,6 +119,7 @@ ul, ol, li {
 </head>
 <body>
 
+
 	<!--引入博客头-->
 	<%@include file="static/includes/navbar.txt"%>
 
@@ -194,5 +196,25 @@ ul, ol, li {
 	</div>
 
 	<%@include file="static/includes/footer.txt" %>
+	
+<!-- 打赏插件 -->
+	<!-- 打赏插件 -->
+<script>
+    window.tctipConfig = {
+        headText: "<%=Myutils.getProperty2("headText")%>",
+        siderText: "<%=Myutils.getProperty2("siderText")%>",
+        siderTextTop: "-80px",
+        siderBgcolor: "#323d45",
+        siderTop:"120px",
+        buttomText:"了解更多",
+        buttomLink:"<%=Myutils.getProperty2("buttomLink")%>",
+        list:{
+            notice: {icon: "static/tctip/img/icon/tip.png", name:"公告栏", className:"myR-on", text: '<%=Myutils.getProperty2("notice")%>'},
+            alipay: {icon: "static/tctip/img/icon/alipay.png", name:"支付宝", desc: "支付宝打赏", qrimg: "static/tctip/img/qr/alipay.png"},
+            weixin: {icon: "static/tctip/img/icon/weixin.png", name:"微信", desc: "微信打赏", qrimg: "static/tctip/img/qr/weixin.png"}	
+        }
+    };
+</script>
+<script src="static/tctip/js/tctip.min.js"></script>
 </body>
 </html>

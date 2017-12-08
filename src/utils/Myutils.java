@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -227,7 +228,17 @@ public class Myutils {
 		String value =  prop.getProperty(key);
 		return value;
 	}
-
+	public static String getProperty2(String key) throws IOException {
+		BufferedReader br = null;
+		Properties datas = new Properties();
+		br = new BufferedReader(new InputStreamReader(new  FileInputStream(Myutils.class.getClassLoader().getResource("config.properties").getPath()), "UTF-8"));
+		datas.load(br);
+		String value =  datas.getProperty(key);
+		return value;
+		
+	}
+	
+	
     /**   
      * 追加文件：使用FileWriter   
      *    
