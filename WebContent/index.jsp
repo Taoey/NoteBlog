@@ -145,7 +145,7 @@ ul, ol, li {
 					class="content-more"> 共187篇博客 <a
 					href="/static/pages/blogs.jsp">more&gt;</a>
 				</span>
-			</h3>
+			</h3> 
 
 			<div class="row">
 				<div class="col-sm-4">

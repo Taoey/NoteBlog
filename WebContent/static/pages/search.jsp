@@ -1,5 +1,6 @@
 <%@page import="
 dao.NoteDao,
+dao.Note2TagDao,
 java.util.*,
 javabean.Note,
 dao.MultiDao,
@@ -245,7 +246,7 @@ ul, ol, li {
 							String name = tagList.get(i).getName();								
 							out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"/static/pages/tagList.jsp"));
 							String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",guid);
-							String tagShow =String.format("<li><span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a></li>","f"+i,name);					
+							String tagShow =String.format("<li><a  href=\"javascript:document:%s.submit();\">&nbsp%s<span>(%s)</span></a></li>","f"+i,name,Note2TagDao.getNoteCount(guid));					
 							out.println(input);
 							out.println(tagShow);
 							out.println("</form>");							
