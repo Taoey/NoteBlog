@@ -168,7 +168,8 @@ public class NoteUtils {
 		Myutils.string2File(noteContent, filedir +file.separator+"content.html");
 		// 复制index.html到各博客文章
 		Myutils.createNoteIndex(filedir+file.separator+"index.jsp", note.getTitle(),note.getGuid());
-		Myutils.string2File("", filedir + file.separator + "z-"+note.getTitle()); // 创建博客名标记
+		
+		Myutils.string2File("", filedir + file.separator + "z-"+Myutils.filterPath(note.getTitle())); // 创建博客名标记
 
 		// 获取资源
 		List<Resource> res = note.getResources();

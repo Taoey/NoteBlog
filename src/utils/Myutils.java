@@ -50,7 +50,7 @@ public class Myutils {
 		String str = "";
 		BufferedReader bre = null;
 		OutputStreamWriter pw = null;// 定义一个流
-		File file=new File("");		
+		File file=new File("");	
 		String sourcePath = file.getAbsolutePath()+"\\static\\pages\\NoteIndex.txt";    //源文件地址
 		sourcePath=sourcePath.replace("bin", "webapps\\ROOT");
 		//sourcePath=sourcePath.replace("noteBlog", "noteBlog\\WebContent");
@@ -264,6 +264,18 @@ public class Myutils {
         }   
     }   
 	
-
+    /**
+     * 文件名过滤器
+     * @param str
+     * @return
+     */
+    public static String  filterPath(String str) {
+    	str=str.replaceAll("\\\\", "").replaceAll("/", "").replaceAll("|", "");
+    	str=str.replaceAll("<", "").replaceAll(">", "").replaceAll(":", "");
+    	str=str.replaceAll("\\*", "").replaceAll("\\?", "").replaceAll("\"", "");
+    	
+		return str;
+    	
+    }
 
 }

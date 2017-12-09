@@ -17,5 +17,9 @@ public class MyUtilsTest {
 		System.out.println(Myutils.getProperty2("siderText"));
 	}
 
-	
+	@Test
+	public void filterPath() {
+		String str="123:\\\"?/";
+		System.out.println(Myutils.filterPath(str));
+	}
 }
