@@ -1,15 +1,22 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+﻿﻿<%@page import="
+utils.Myutils,
+dao.MultiDao,
+dao.NoteDao,
+dao.TagDao,
+dao.Note2TagDao,
+java.util.*,
+javabean.Note,
+javabean.Tag
+"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>modelTitle</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 可选的Bootstrap主题文件（一般不使用） -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <meta name="viewport" content="width=device-width,
@@ -17,6 +24,7 @@
                                      maximum-scale=1.0,
                                      user-scalable=no">
 	<%@include file="../../static/includes/googleUA.txt"%>
+	<link type="text/css" rel="stylesheet" href="../../static/tctip/css/myRewards.css">
     <style>
         body{
             padding-top: 70px;
@@ -57,7 +65,20 @@
                     <span class="clearfix"></span>
                     <ul>
                         <li>分类标签：
-                            <a href="/blog/?tag=8" target=_blank>Django</a>
+                        <%                           	
+							List<Tag> tList=MultiDao.getAllTagByNote("mysid");
+							if(tList!=null && !tList.isEmpty()){
+								for(int j=0;j<tList.size();j++){
+									String tagGuid = tList.get(j).getGuid();
+									String name = tList.get(j).getName();									
+									String tagShow =String.format("<a  href=\"../../static/pages/tagList.jsp?tagGuid=%s\">%s</a>",tagGuid,name);					
+									out.println(tagShow);																									
+								}
+							}                        
+                        
+                        
+                        %>
+
                         </li>
                     </ul>
                 </div>
@@ -65,12 +86,12 @@
 
             <div class="panel-body">
                 <div>                    
-                    <%@ include file="content.html"%>
+                    <%@ include file="content.html"%>                    
                 </div>
             </div>
         </div>
         <div>
-        	<!--PC和WAP自适应版-->
+<!--PC和WAP自适应版-->
 <div id="SOHUCS" sid="mysid" ></div> 
 <script type="text/javascript"> 
 (function(){ 
@@ -83,105 +104,42 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     </div>
     <div class="col-md-3 col-xs-12  ">
         <div class="side-list side-margin  blog-border" >
-            <h4>
+            <h4 style="color:#7c827f">
                 <span class="glyphicon glyphicon-book"></span>
-                博客标签
+               				 推荐博文
             </h4>
             <ul>
-
-                <li>
-                    <a href="/blog/24" target="_blank">利用Eval函数，简单实现回调机制</a>
-                </li>
-
-                <li>
-                    <a href="/blog/23" target="_blank">Access建表规范总结(6)：最小信息</a>
-                </li>
-
-                <li>
-                    <a href="/blog/44" target="_blank">以图搜图(二)：Python实现pHash算法</a>
-                </li>
-
-                <li>
-                    <a href="/blog/81" target="_blank">Django处理同名url参数</a>
-                </li>
-
-                <li>
-                    <a href="/blog/116" target="_blank">Excel公式新手学习推荐</a>
-                </li>
-
-                <li>
-                    <a href="/blog/170" target="_blank">Python实现快速排序算法</a>
-                </li>
-
-                <li>
-                    <a href="/blog/100" target="_blank">我的网站搭建(第37天) 上传图片加水印</a>
-                </li>
-
-                <li>
-                    <a href="/blog/101" target="_blank">C#的序列化和反序列化</a>
-                </li>
-
-                <li>
-                    <a href="/blog/168" target="_blank">我的网站搭建(第54天) Celery异步发送邮件</a>
-                </li>
-
-                <li>
-                    <a href="/blog/134" target="_blank">我的网站搭建(第46天) 在线头像</a>
-                </li>
-
-            </ul>
-        </div>
-        <div class="side-list  side-margin blog-border ">
-            <h4>
-                <span class="glyphicon glyphicon-book"></span>
-                博客标签
-            </h4>
-            <ul>
-
-                <li>
-                    <a href="/blog/24" target="_blank">利用Eval函数，简单实现回调机制</a>
-                </li>
-
-                <li>
-                    <a href="/blog/23" target="_blank">Access建表规范总结(6)：最小信息</a>
-                </li>
-
-                <li>
-                    <a href="/blog/44" target="_blank">以图搜图(二)：Python实现pHash算法</a>
-                </li>
-
-                <li>
-                    <a href="/blog/81" target="_blank">Django处理同名url参数</a>
-                </li>
-
-                <li>
-                    <a href="/blog/116" target="_blank">Excel公式新手学习推荐</a>
-                </li>
-
-                <li>
-                    <a href="/blog/170" target="_blank">Python实现快速排序算法</a>
-                </li>
-
-                <li>
-                    <a href="/blog/100" target="_blank">我的网站搭建(第37天) 上传图片加水印</a>
-                </li>
-
-                <li>
-                    <a href="/blog/101" target="_blank">C#的序列化和反序列化</a>
-                </li>
-
-                <li>
-                    <a href="/blog/168" target="_blank">我的网站搭建(第54天) Celery异步发送邮件</a>
-                </li>
-
-                <li>
-                    <a href="/blog/134" target="_blank">我的网站搭建(第46天) 在线头像</a>
-                </li>
-
+							<%
+								List<Note> nList=NoteDao.getRandNotes();
+								if(nList!=null && !nList.isEmpty()){
+									for(int i=0;i<nList.size();i++){
+										String noteGuid = nList.get(i).getGuid();
+										String noteTitle = nList.get(i).getTitle();
+										out.println("<li><a href=\"/../blogs/" + noteGuid + "\" target=\"_blank\">" + noteTitle + "</a></li>");
+									}
+								}
+							%>	
             </ul>
         </div>
     </div>
 </div>
 
+<script>
+    window.tctipConfig = {
+        headText: "<%=Myutils.getProperty2("headText")%>",
+        siderText: "<%=Myutils.getProperty2("siderText")%>",
+        siderTextTop: "-80px",
+        siderBgcolor: "#323d45",
+        siderTop:"120px",
+        buttomText:"了解更多",
+        buttomLink:"<%=Myutils.getProperty2("buttomLink")%>",
+        list:{
+            notice: {icon: "../../static/tctip/img/icon/tip.png", name:"公告栏", className:"myR-on", text: '<%=Myutils.getProperty2("notice")%>'},
+            alipay: {icon: "../../static/tctip/img/icon/alipay.png", name:"支付宝", desc: "支付宝打赏", qrimg: "../../static/tctip/img/qr/alipay.png"},
+            weixin: {icon: "../../static/tctip/img/icon/weixin.png", name:"微信", desc: "微信打赏", qrimg: "../../static/tctip/img/qr/weixin.png"}	
+        }
+    };
+</script>
+<script src="../../static/tctip/js/tctip.min.js"></script>
 </body>
 </html>
