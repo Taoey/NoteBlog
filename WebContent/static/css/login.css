@@ -1,0 +1,36 @@
+@charset "UTF-8";
+ body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-yx{
+    color: #fff;
+    background-color: #2dbe60;
+    border-color: #2ECC40;
+}
+.btn-yx:hover{
+    color: #fff;
+    background-color: #28a956;
+    border-color: #1b9848;
+}
+#inputPassword{
+    margin: 5px 0 0 0;
+}
