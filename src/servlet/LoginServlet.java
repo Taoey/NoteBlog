@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,16 +26,24 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("pwd");
 		 
 		
-		if(AdminDao.valiNamepsw(name,password)) {
-			request.getSession().setAttribute("error","False");
-			request.getRequestDispatcher("/WEB-INF/adminPage/dashBoard.jsp").forward(request,response); 
-			//response.sendRedirect(request.getContextPath()+"/WEB-INF/adminPage/admin.jsp");
-			return;//写重定向代码时的习惯，即写完重定向就写return，防止重定向之后的代码仍然执行
-		}
-		else {
-			request.getSession().setAttribute("error","True");
-			response.sendRedirect(request.getContextPath()+"/admin.jsp");
-			return;
+		try {
+			if(AdminDao.valiNamepsw(name,password)) {
+				request.getSession().setAttribute("error","False");
+				request.getRequestDispatcher("/WEB-INF/adminPage/dashBoard.jsp").forward(request,response); 
+				//response.sendRedirect(request.getContextPath()+"/WEB-INF/adminPage/admin.jsp");
+				return;//写重定向代码时的习惯，即写完重定向就写return，防止重定向之后的代码仍然执行
+			}
+			else {
+				request.getSession().setAttribute("error","True");
+				response.sendRedirect(request.getContextPath()+"/admin.jsp");
+				return;
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}		
 		
 	}

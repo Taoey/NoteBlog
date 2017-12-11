@@ -16,6 +16,18 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`noteblog2.0` /*!40100 DEFAULT CHARACTER
 
 USE `noteblog2.0`;
 
+/*Table structure for table `admin` */
+
+DROP TABLE IF EXISTS `admin`;
+
+CREATE TABLE `admin` (
+  `name` varchar(20) NOT NULL,
+  `passwd` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `admin` */
+
 /*Table structure for table `note` */
 
 DROP TABLE IF EXISTS `note`;
@@ -43,7 +55,7 @@ CREATE TABLE `note2tag` (
   KEY `note2tag_ibfk_2` (`_tagGuid`),
   CONSTRAINT `note2tag_ibfk_1` FOREIGN KEY (`_noteGuid`) REFERENCES `note` (`_guid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `note2tag_ibfk_2` FOREIGN KEY (`_tagGuid`) REFERENCES `tag` (`_guid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
 
 /*Data for the table `note2tag` */
 

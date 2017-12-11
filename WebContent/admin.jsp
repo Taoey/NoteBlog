@@ -17,10 +17,10 @@
       <form class="form-signin" action="${pageContext.request.contextPath }/LoginServlet" method="post">
         <h2 class="form-signin-heading">登录</h2>
         <label for="inputEmail" class="sr-only">用户名</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
+        <input type="text" id="inputEmail" name="name" class="form-control" placeholder="用户名" required autofocus>
         <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
-        <%
+        <input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="密码" required>
+		<%
         String isError=(String)session.getAttribute("error");
         if("True".equals(isError)){
         	out.println("<div style=\"color:red; margin:5px 0 5px 0\">");
