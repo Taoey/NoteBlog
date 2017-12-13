@@ -28,6 +28,8 @@ CREATE TABLE `admin` (
 
 /*Data for the table `admin` */
 
+insert  into `admin`(`name`,`passwd`) values ('admin','admin');
+
 /*Table structure for table `note` */
 
 DROP TABLE IF EXISTS `note`;
