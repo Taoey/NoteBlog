@@ -7,10 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.evernote.edam.notestore.NoteMetadata;
+import com.mysql.jdbc.util.ResultSetUtil;
 
 import javabean.Note;
 import utils.JDBCUtil;
@@ -32,13 +35,15 @@ public class NoteDao {
 	public static void addNote(NoteMetadata noteMetadata,int isHave) throws FileNotFoundException, IOException{
 		try {
 			connection=JDBCUtil.getConnection();
-			String sql="insert into note(_guid,_title,_isUpdated,_isHave) values(?,?,?,?)";
-			
+			String sql="insert into note(_guid,_title,_isUpdated,_isHave,_time) values(?,?,?,?,?)";
+			Date date = new Date();
+			Timestamp timeStamp = new Timestamp(date.getTime());
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1,noteMetadata.getGuid());
 			preparedStatement.setString(2, noteMetadata.getTitle());			
 			preparedStatement.setLong(3, noteMetadata.getUpdated());
 			preparedStatement.setInt(4, isHave);
+			preparedStatement.setTimestamp(5,timeStamp);
 			
 			preparedStatement.execute();		
 			
@@ -217,8 +222,8 @@ public class NoteDao {
 			
 			String title = resultSet.getString("_title");
 			String guid = resultSet.getString("_guid");	
-			
-			myNoteList.add(new Note(title,guid));
+			Timestamp time = resultSet.getTimestamp("_time");
+			myNoteList.add(new Note(title,guid,time));
 		}
 		JDBCUtil.close(resultSet, preparedStatement, connection);
 		
@@ -247,8 +252,9 @@ public class NoteDao {
 		while (resultSet != null && resultSet.next()) {
 			
 			String title = resultSet.getString("_title");
-			String guid = resultSet.getString("_guid");					
-			myNoteList.add(new Note(title,guid));
+			String guid = resultSet.getString("_guid");
+			Timestamp time = resultSet.getTimestamp("_time");
+			myNoteList.add(new Note(title,guid,time));
 		}
 		JDBCUtil.close(resultSet, preparedStatement, connection);
 		
@@ -277,14 +283,42 @@ public class NoteDao {
 		while (resultSet != null && resultSet.next()) {
 			
 			String title = resultSet.getString("_title");
-			String guid = resultSet.getString("_guid");					
-			myNoteList.add(new Note(title,guid));
+			String guid = resultSet.getString("_guid");
+			Timestamp time = resultSet.getTimestamp("_time");
+			myNoteList.add(new Note(title,guid,time));
 		}
 		JDBCUtil.close(resultSet, preparedStatement, connection);
 		
 		return myNoteList;
 	}
 	
+	/**
+	 * 获取最近更新笔记
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Note> getRecentNotes() throws Exception{
+		List<Note>  myNoteList=new ArrayList<Note>();
+		
+		connection=JDBCUtil.getConnection();
+		
+		String sql="SELECT * FROM note  ORDER BY  _time DESC LIMIT 10";
+		statement=connection.createStatement();	
+		
+		resultSet=statement.executeQuery(sql);
+		
+		while (resultSet != null && resultSet.next()) {
+			
+			String title = resultSet.getString("_title");
+			String guid = resultSet.getString("_guid");
+			Timestamp time = resultSet.getTimestamp("_time");
+			myNoteList.add(new Note(title,guid,time));
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);
+		
+		return myNoteList;	
+	
+	}
 	
 	
 	

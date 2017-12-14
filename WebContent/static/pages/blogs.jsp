@@ -1,3 +1,5 @@
+<%@page import="com.evernote.edam.notestore.NoteList"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="dao.MultiDao"%>
 <%@page import="
 dao.NoteDao,
@@ -170,6 +172,9 @@ ul, ol, li {
 							String title = notesList.get(i).getTitle();	
 							String guid = notesList.get(i).getGuid();					
 							//String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
+							Timestamp timestamp = notesList.get(i).getTime();
+							String time = String.format("%s年%s月%s日",timestamp.getYear()+1990+"",timestamp.getMonth()+1+"",timestamp.getDate()+"");
+							
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
 							out.println("<a href=\"/../blogs/" + guid + "\" target=\"_blank\">" + title + "</a>");//title
@@ -177,7 +182,7 @@ ul, ol, li {
 							out.println("<div class=\"blog-tags\">");
 							out.println("<ul>");
 							out.println("<li><span class=\"glyphicon glyphicon-time\"></span>");
-							out.println("<span>#time#</span></li>"); //time
+							out.println("<span>"+time+"</span></li>"); //time
 							
 							//获取对应笔记的标签名和标签guid
 							List<Tag> tList=MultiDao.getAllTagByNote(guid);

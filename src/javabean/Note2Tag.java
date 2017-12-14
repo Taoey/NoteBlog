@@ -24,6 +24,10 @@ public class Note2Tag {
 	public void setTagGuid(String tagGuid) {
 		this.tagGuid = tagGuid;
 	}
+	@Override
+	public String toString() {
+		return "Note2Tag [noteGuid=" + noteGuid + ", tagGuid=" + tagGuid + "]";
+	}
 	
 
 }

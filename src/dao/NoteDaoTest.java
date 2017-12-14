@@ -1,8 +1,5 @@
 package dao;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
@@ -26,6 +23,17 @@ public class NoteDaoTest {
 	public void getRandNotes() throws Exception{
 		List<Note> nList = NoteDao.getRandNotes();
 		System.out.println(nList.size());
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void getRecentNotes() throws Exception{
+		Note n = NoteDao.getRecentNotes().get(0);
+		int year = n.getTime().getYear()+1900;
+		int month = n.getTime().getMonth() + 1;
+		int day = n.getTime().getDate();
+		System.out.println(year);
+		
 	}
 	
 	

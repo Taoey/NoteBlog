@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +43,9 @@ public class MultiDao {
 		while (resultSet != null && resultSet.next()) {
 			
 			String title = resultSet.getString("_title");
-			String guid = resultSet.getString("_guid");					
-			myNoteList.add(new Note(title,guid));
+			String guid = resultSet.getString("_guid");		
+			Timestamp time = resultSet.getTimestamp("_time");
+			myNoteList.add(new Note(title,guid,time));
 		}
 		JDBCUtil.close(resultSet, preparedStatement, connection);
 		

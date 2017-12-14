@@ -190,6 +190,23 @@ ul, ol, li {
 						</ul>
 					</div>
 				</div>
+				<div class="col-sm-4">
+					<div class="home-block">
+						<h4 class='home-block-title'>最近更新</h4>
+						<ul class="list">
+							<%
+								List<Note> nList2=NoteDao.getRecentNotes();
+								if(nList!=null && !nList.isEmpty()){
+									for(int i=0;i<nList.size();i++){
+										String noteGuid = nList.get(i).getGuid();
+										String noteTitle = nList.get(i).getTitle();
+										out.println("<li><a href=\"/../blogs/" + noteGuid + "\" target=\"_blank\">" + noteTitle + "</a></li>");//title
+									}
+								}
+							%>							
+						</ul>
+					</div>
+				</div>
 
 			</div>
 		</div>
