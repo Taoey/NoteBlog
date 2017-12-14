@@ -9,8 +9,8 @@
 *.properties
 !src/config.properties
 
-*.gitignore
-!.gitignore
+.gitignore
+!/.gitignore
 
 
 
