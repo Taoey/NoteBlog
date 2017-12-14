@@ -4,8 +4,13 @@
 
 # Compiled class file
 *.class
+
+####
 *.properties
 !src/config.properties
+
+*.gitignore
+!.gitignore
 
 
 
