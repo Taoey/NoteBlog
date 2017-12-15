@@ -41,6 +41,8 @@ ul, ol, li {
 	padding: 0;
 	margin: 0;
 }
+/*导航栏*/
+
 /*巨幕*/
 .jumbotron {
 	background-color: #17d684;
@@ -81,9 +83,11 @@ ul, ol, li {
 .home-block .list a {
 	color: #333;
 }
+
 .home-block .list a:hover {
 	color: #18d676;
 }
+
 .home-block .list li {
 	margin-bottom: 1px;
 	white-space: nowrap;
@@ -119,7 +123,7 @@ ul, ol, li {
 
 .alist a:hover {
 	text-decoration: none;
-	color: #fff;
+	color: #17d684;
 }
 
 .alist a:focus {
@@ -135,20 +139,54 @@ ul, ol, li {
 	<%@include file="static/includes/navbar.txt"%>
 
 
-	<div class="jumbotron">
-		<div class="container">
-			<div class="header-banner">
-				<div class="container">
-					<div class="text-center">
-						<h1>HWT Blog</h1>
-						<p>精益求精，发表高质量的技术博客</p>
-						<p>生命不息,折腾不止</p>
+	<!-- 轮播插件 -->
+	<div class="column">
+			<div class="carousel slide" id="carousel-527591">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" data-target="#carousel-527591">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-527591">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-527591">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img alt="" src="static/images/banner/01.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								First Thumbnail label
+							</h4>
+<!-- 							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p> -->
+						</div>
 					</div>
-
-				</div>
+					<div class="item">
+						<img alt="" src="static/images/banner/01.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Second Thumbnail label
+							</h4>
+<!-- 							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p> -->
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="static/images/banner/01.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Third Thumbnail label
+							</h4>
+<!-- 							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p> -->
+						</div>
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-527591" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-527591" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 		</div>
-	</div>
 
 
 	<div class="container">
