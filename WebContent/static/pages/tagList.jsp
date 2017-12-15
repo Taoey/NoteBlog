@@ -174,7 +174,7 @@ ul, ol, li {
 							String guid = notesList.get(i).getGuid();							
 							//String note = String.format("<a href=\"%s\">%s</a></br>", url, title);
 							Timestamp timestamp = notesList.get(i).getTime();
-							String time = String.format("%s年%s月%s日",timestamp.getYear()+1990+"",timestamp.getMonth()+1+"",timestamp.getDate()+"");
+							String time = String.format("%s年%s月%s日",timestamp.getYear()+1900+"",timestamp.getMonth()+1+"",timestamp.getDate()+"");
 														
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
