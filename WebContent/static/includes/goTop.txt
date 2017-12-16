@@ -6,7 +6,7 @@
     position:fixed;
     bottom:50px;
     right:10px;
-    background-color:#17D684;
+    background-color:<%=Myutils.getProperty2("siteColor")%>;
     z-index:1;
     width:36px;
     height:36px;
@@ -17,7 +17,7 @@
 }
 .returnBtn a {
 	text-decoration: none;
-	color: #b7ffbe;
+	color: <%=Myutils.getProperty2("secondColor")%>;
 }
 .returnBtn a:hover {
 	text-decoration: none;

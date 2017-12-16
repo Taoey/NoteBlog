@@ -42,19 +42,19 @@ ul, ol, li {
 }
 /*巨幕*/
 .jumbotron {
-	background-color: #17d684;
+	background-color: <%=Myutils.getProperty2("siteColor")%>;
 	color: #fff;
 }
 /*输入框选中边框颜色*/
 .form-control:focus {
-	border-color: #17d684;
+	border-color: <%=Myutils.getProperty2("siteColor")%>;
 	outline: 0;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), #17d684;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), #17d684;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), <%=Myutils.getProperty2("siteColor")%>;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), <%=Myutils.getProperty2("siteColor")%>;
 }
 /*页脚 start*/
 #footer {
-	background-color: #17d684;
+	background-color: <%=Myutils.getProperty2("siteColor")%>;
 	margin-top: 35px;
 	color: #fff;
 }
@@ -69,7 +69,7 @@ ul, ol, li {
 }
 
 .alist a {
-	color: #b7ffbe;
+	color: <%=Myutils.getProperty2("secondColor")%>;
 }
 
 .alist a:hover {

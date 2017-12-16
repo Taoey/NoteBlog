@@ -18,9 +18,9 @@ javabean.Tag
 <link type="text/css" rel="stylesheet" href="static/tctip/css/myRewards.css">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="<%=Myutils.getProperty2("aliLink")%>">
-<script src="static/bootstrap-3.3.7/js/jquery.js"></script>
-<link rel="stylesheet" href="static/bootstrap-3.3.7/css/bootstrap.min.css">
-<script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 
 <meta name="viewport" content="width=device-width,
                                  initial-scale=1.0,
@@ -45,7 +45,7 @@ ul, ol, li {
 
 /*巨幕*/
 .jumbotron {
-	background-color: #17d684;
+	background-color: <%=Myutils.getProperty2("siteColor")%>;
 	color: #fff;
 }
 
@@ -96,14 +96,14 @@ ul, ol, li {
 }
 /*输入框选中边框颜色*/
 .form-control:focus {
-	border-color: #17d684;
+	border-color: <%=Myutils.getProperty2("siteColor")%>;
 	outline: 0;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), #17d684;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), #17d684;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), <%=Myutils.getProperty2("siteColor")%>;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), <%=Myutils.getProperty2("siteColor")%>;
 }
 /*页脚 start*/
 #footer {
-	background-color: #17d684;
+	background-color: <%=Myutils.getProperty2("siteColor")%>;
 	margin-top: 35px;
 	color: #fff;
 }
@@ -118,12 +118,12 @@ ul, ol, li {
 }
 
 .alist a {
-	color: #b7ffbe;
+	color: <%=Myutils.getProperty2("secondColor")%>;
 }
 
 .alist a:hover {
 	text-decoration: none;
-	color: #17d684;
+	color: <%=Myutils.getProperty2("siteColor")%>;
 }
 
 .alist a:focus {

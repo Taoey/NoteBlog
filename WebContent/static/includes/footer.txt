@@ -7,7 +7,10 @@
             <div class="alist">
                 <span>二十四向风吹过,一切皆空</span>
                 <a href="https://github.com/Taoey" title="GitHub"><i class="iconfont icon-github gly-i " aria-hidden="true" ></i></a>
-                <a href="mailto:swhwtqwer@163.com" title="email"><i class=" iconfont icon-csdn gly-i" aria-hidden="true"></i></a>
+                <a href="http://blog.csdn.net/qq_33017925?viewmode=contents" title="email"><i class=" iconfont icon-csdn gly-i" aria-hidden="true"></i></a>
+                <a href="https://music.163.com/#/user/home?id=108664745" ><i class=" iconfont icon-wangyiyungrey gly-i" aria-hidden="true"></i></a>
+                <a href="http://www.cnblogs.com/hwtblog/" ><i class=" iconfont icon-bokeyuan gly-i" aria-hidden="true"></i></a>
+                <a href="http://www.jianshu.com/u/c971d061baa1" ><i class=" iconfont icon-jianshu gly-i" aria-hidden="true"></i></a>
             </div>
             <span>Welcome to visit my website &copy; <a href="https://github.com/Taoey/" style="color:#FFF">TaoeyHuang</a></span>
         </div>
