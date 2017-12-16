@@ -17,7 +17,7 @@ javabean.Tag
 <title>hwt</title>
 <link type="text/css" rel="stylesheet" href="static/tctip/css/myRewards.css">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_403793_5froamywp45f80k9.css">
+<link rel="stylesheet" href="<%=Myutils.getProperty2("aliLink")%>">
 <script src="static/bootstrap-3.3.7/js/jquery.js"></script>
 <link rel="stylesheet" href="static/bootstrap-3.3.7/css/bootstrap.min.css">
 <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -140,7 +140,7 @@ ul, ol, li {
 			<div class="header-banner">
 				<div class="container">
 					<div class="text-center">
-						<h1>HWT Blog</h1>
+						<h1><%=Myutils.getProperty2("jumbotronHead")%></h1>
 						<p>精益求精，发表高质量的技术博客</p>
 						<p>生命不息,折腾不止</p>
 					</div>

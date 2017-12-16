@@ -18,7 +18,7 @@ dao.TagDao
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>hwt</title>
 <link type="text/css" rel="stylesheet" href="../tctip/css/myRewards.css">
-
+<link rel="stylesheet" href="<%=Myutils.getProperty2("aliLink")%>">
 <%@include file="../includes/header.txt"%>
 <%@include file="../includes/googleUA.txt"%>
 
@@ -139,7 +139,8 @@ ul, ol, li {
 </head>
 
 <body>
-
+	<!--回到顶端-->
+	<%@include file="../../static/includes/goTop.txt"%>
 	<%@ include file="../includes/navbar.txt"%>
 
 	<div class="jumbotron">

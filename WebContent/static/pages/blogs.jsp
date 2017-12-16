@@ -19,7 +19,7 @@ javabean.Tag
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>hwt</title>
-
+<link rel="stylesheet" href="<%=Myutils.getProperty2("aliLink")%>">
 <link type="text/css" rel="stylesheet" href="../tctip/css/myRewards.css">
 
 
@@ -143,7 +143,8 @@ ul, ol, li {
 </head>
 
 <body>
-
+	<!--回到顶端-->
+	<%@include file="../../static/includes/goTop.txt"%>
 	<%@ include file="../includes/navbar.txt"%>
 
 	<div class="jumbotron">

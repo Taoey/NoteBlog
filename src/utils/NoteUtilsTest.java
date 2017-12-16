@@ -4,7 +4,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.evernote.auth.EvernoteAuth;
+import com.evernote.auth.EvernoteService;
+import com.evernote.clients.ClientFactory;
+import com.evernote.clients.NoteStoreClient;
 import com.evernote.edam.notestore.NoteMetadata;
+import com.evernote.edam.type.Notebook;
 
 public class NoteUtilsTest {
 	
@@ -16,7 +21,7 @@ public class NoteUtilsTest {
 		System.out.println(s);//6963a2b9-f62b-4555-a728-21e72cd0cc30
 		//从配置文件中获取目的笔记本
 		String b=NoteUtils.getNoteBookGuid(Myutils.getProperty("NoteBookName"));//笔记本:印象博客2.0测试专用
-		System.out.println(b);//59e00459-b1b8-427d-825e-5493af44ed25
+		System.out.println(b);
 	}
 	
 	@Test
@@ -50,6 +55,17 @@ public class NoteUtilsTest {
 		System.out.println(s);
 	}
 	
+	@Test
+	public void getAllNoteBooks() throws Exception{
+		String authToken=Myutils.getProperty2("token");
+		EvernoteAuth evernoteAuth = new EvernoteAuth(EvernoteService.YINXIANG, authToken);
+		ClientFactory factory = new ClientFactory(evernoteAuth);
+		NoteStoreClient noteStore = factory.createNoteStoreClient();
+        List<Notebook> notebooks = noteStore.listNotebooks();
+        for (Notebook notebook : notebooks) {
+         System.out.println("Notebook: " + notebook.getName());
+        }
+	}
 	
 	
 	

@@ -17,7 +17,7 @@ javabean.Tag
 <title>hwt</title>
 <link type="text/css" rel="stylesheet" href="static/tctip/css/myRewards.css">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_403793_5froamywp45f80k9.css">
+<link rel="stylesheet" href="<%=Myutils.getProperty2("aliLink")%>">
 <script src="static/bootstrap-3.3.7/js/jquery.js"></script>
 <link rel="stylesheet" href="static/bootstrap-3.3.7/css/bootstrap.min.css">
 <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>

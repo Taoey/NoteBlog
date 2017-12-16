@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,7 +35,7 @@ public class AdminServlet extends HttpServlet {
 			
 			// 获取对应笔记本			
 			try {				
-				String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty("NoteBookName"));
+				String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty2("NoteBookName"));
 				// System.out.println(bookGuid);
 	
 				// 同步设置
@@ -43,7 +45,9 @@ public class AdminServlet extends HttpServlet {
 				while (true) {
 					currentUpdataCount = NoteUtils.getCUC();
 					if (lastUpdataCount < currentUpdataCount) {// 更新了
-						System.out.println("yse");
+						Date date = new Date();
+						Timestamp timeStamp = new Timestamp(date.getTime());
+						System.out.println(timeStamp+" :YES");
 						lastUpdataCount = currentUpdataCount;
 						// 重新获取Note列表
 						List<NoteMetadata> noteMetadataList = NoteUtils.getNoteMetadata(bookGuid);
@@ -188,7 +192,9 @@ public class AdminServlet extends HttpServlet {
 						NoteDao.updateAllIsHave(0);
 						
 					} else {// 没更新
-						System.out.println("No");
+						Date date = new Date();
+						Timestamp timeStamp = new Timestamp(date.getTime());
+						System.out.println(timeStamp+" :NO");
 					}
 					Thread.sleep(1000 * 40 * 1);
 				}

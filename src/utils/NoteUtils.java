@@ -29,7 +29,7 @@ public class NoteUtils {
 	//初始化	
 	static{
 		try {			
-			authToken=Myutils.getProperty("token");
+			authToken=Myutils.getProperty2("token");
 			EvernoteAuth evernoteAuth = new EvernoteAuth(EvernoteService.YINXIANG, authToken);
 			ClientFactory factory = new ClientFactory(evernoteAuth);
 

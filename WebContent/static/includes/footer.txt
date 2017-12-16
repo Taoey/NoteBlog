@@ -9,7 +9,7 @@
                 <a href="https://github.com/Taoey" title="GitHub"><i class="iconfont icon-github gly-i " aria-hidden="true" ></i></a>
                 <a href="mailto:swhwtqwer@163.com" title="email"><i class=" iconfont icon-csdn gly-i" aria-hidden="true"></i></a>
             </div>
-            <span>Welcome to visit my website &copy; TaoeyHuang</span>
+            <span>Welcome to visit my website &copy; <a href="https://github.com/Taoey/" style="color:#FFF">TaoeyHuang</a></span>
         </div>
     </div>
 </div>
