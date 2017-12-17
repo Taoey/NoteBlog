@@ -14,6 +14,7 @@
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
                                      user-scalable=no">
+     <%@include file="../includes/googleUA.txt"%>                                
     <style>
         body{
             padding-top: 50px;
@@ -86,7 +87,7 @@
         <div class="header-banner">
             <div class="container">
                 <div class="text-center">
-                    <h1>HWT Blog</h1>
+                    <h1>相信未来</h1>
                     <p>精益求精，发表高质量的技术博客</p>
                     <p>黄为涛的博客</p>
                 </div>

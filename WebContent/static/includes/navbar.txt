@@ -17,7 +17,7 @@
                 <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
                 <li><a href="/static/pages/blogs.jsp"><span class="glyphicon glyphicon-pencil"></span>博客</a></li>
                 <li><a href="/static/pages/specialPage.jsp"><span class="glyphicon glyphicon-file"></span>专栏</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>关于</a></li>
+                <li><a href="/static/pages/about.jsp"><span class="glyphicon glyphicon-user"></span>关于</a></li>
             </ul>
             <form action="/static/pages/search.jsp" class="navbar-form navbar-right">
                 <div class="input-group">

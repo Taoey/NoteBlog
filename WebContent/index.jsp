@@ -155,7 +155,7 @@ ul, ol, li {
 		<div class="content-item">
 			<h3 class="content-item-title">
 				<span class="glyphicon glyphicon-pencil"></span> <span>博客</span> <span
-					class="content-more"> 共187篇博客 <a
+					class="content-more"> 共<%=NoteDao.getAllNoteCount()%>篇博客 <a
 					href="/static/pages/blogs.jsp">more&gt;</a>
 				</span>
 			</h3> 

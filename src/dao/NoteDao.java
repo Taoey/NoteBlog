@@ -231,6 +231,27 @@ public class NoteDao {
 	}
 	
 	/**
+	 * 获取一个所有笔记的数量
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public static int getAllNoteCount() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+		int noteCount=0;
+		connection=JDBCUtil.getConnection();
+		
+		String sql=String.format("SELECT COUNT(_guid) AS _noteCount FROM note");
+		statement=connection.createStatement();		
+		resultSet = statement.executeQuery(sql);
+		while (resultSet != null && resultSet.next()) {			
+			noteCount = resultSet.getInt("_noteCount");				
+		}
+		JDBCUtil.close(resultSet, preparedStatement, connection);		
+		return noteCount;
+	}
+	/**
 	 *根据searchStr 搜素相应笔记
 	 * @param searchStr
 	 * @return myNoteList 笔记列表
