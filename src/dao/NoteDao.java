@@ -76,13 +76,15 @@ public class NoteDao {
 			
 			boolean result=noteMetadata.getUpdated()==resultSet.getLong("_isUpdated");
 			if(result){
+				JDBCUtil.close(resultSet, preparedStatement, connection);
 				return 0;//没更新
 			}
 			else{
+				JDBCUtil.close(resultSet, preparedStatement, connection);
 				return 1;//更新了
 			}
 		}
-		
+		JDBCUtil.close(resultSet, preparedStatement, connection);
 		return -1;//没有这条笔记
 		
 	}

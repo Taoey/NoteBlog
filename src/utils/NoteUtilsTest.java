@@ -41,10 +41,7 @@ public class NoteUtilsTest {
 		List<String> s = NoteUtils.getNoteTagNames("880a7dba-f36e-4358-b98b-75997e779422");
 		System.out.println(s);//[黄为涛, 印象博客2.0测试]
 	}
-	
-	
-	
-	
+		
 	@Test
 	public void getBlog() throws Exception{
 		NoteUtils.getBlog("880a7dba-f36e-4358-b98b-75997e779422");

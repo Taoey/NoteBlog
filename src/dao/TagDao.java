@@ -66,9 +66,11 @@ public class TagDao {
 			resultSet = statement.executeQuery(sql);
 			
 			if(resultSet.next()) {
+				JDBCUtil.close(resultSet, preparedStatement, connection);
 				return 1;
 			}
 			else {
+				JDBCUtil.close(resultSet, preparedStatement, connection);
 				return 0;
 			}
 			

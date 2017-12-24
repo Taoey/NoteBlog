@@ -58,10 +58,11 @@ public class Note2TagDao {
 		resultSet = statement.executeQuery(sql);
 		
 		if(resultSet.next()){
+			JDBCUtil.close(resultSet, preparedStatement, connection);
 			return 1;
 
 		}
-		
+		JDBCUtil.close(resultSet, preparedStatement, connection);
 		return 0;//没有这条笔记
 		
 	

@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import utils.JDBCUtil;
+
 public class AdminDao {
 	private static Connection connection=null;
 	private static Statement statement=null;
@@ -32,9 +34,11 @@ public class AdminDao {
 		String sql =String.format("select * from admin where name='%s'and passwd='%s'",name,passwd);
 		resultSet=statement.executeQuery(sql);
 		if(!resultSet.next()) {
+			JDBCUtil.close(resultSet, preparedStatement, connection);
 			return false;
 		}
 		else{
+			JDBCUtil.close(resultSet, preparedStatement, connection);
 			return true;
 		}
 		

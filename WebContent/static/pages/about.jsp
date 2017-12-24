@@ -66,8 +66,8 @@
                     <p class="big">&nbsp;&nbsp;&nbsp;&nbsp;本项目是一个基于印象笔记的开源博客框架.想法来源于一个最初的需求
                         :拥有一个博客,虽然网络上已经有CSDN,博客园,简书等等各种博客平台.但是作为一名正在成长的程序员来说,
                         自己建立一个独立博客的精神还是值得学习的,恰好我是印象笔记的一名忠实用户,在跳了好多坑之后,终于研究好了大体的
-                        印象笔记的API,经过不懈的努力这个框架终于成功发布了.现在这个项目框架比较简单,在深入学习网络知识框架之后,会对次框架进行进一步修改.
-                        (详情请移步<b><a href="https://github.com/taoey" style="color:<%=Myutils.getProperty2("siteColor")%>;">我的github</a></b>)
+                        印象笔记的API,经过不懈的努力这个框架终于成功发布了.现在这个项目框架比较简单,在深入学习网络知识框架之后,会对次框架进行进一步修改.如有任何建议请通过我的github项目Issue中提问，或者邮箱联系我哦
+                        (详情请移步<b><a href="https://github.com/swhwt" style="color:<%=Myutils.getProperty2("siteColor")%>;">我的github</a></b>)
                     </p>
                  </div>
                 <h3 id="aboutMe">2.关于本人</h3>
