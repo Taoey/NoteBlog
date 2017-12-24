@@ -1,14 +1,11 @@
-package servlet;
+package admin;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.evernote.edam.notestore.NoteMetadata;
 
@@ -18,23 +15,30 @@ import dao.TagDao;
 import utils.Myutils;
 import utils.NoteUtils;
 
+public class MyController extends Thread{
 
-public class AdminServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static MyController c=null;
+	private static Boolean LOCK; //程序是否加锁（程序运行时，如果出现某个状态则加锁，使stop（）无法执行）
+	private static Boolean SLEEP;//系统是否处于休眠
+	
+	private MyController() {		
+		super();
+	}
+	public static void createController() throws InterruptedException{
+		if(c==null) {
+			c=new MyController();
+			LOCK=false;
+			SLEEP=true;
+		}
+	}
 
-    public AdminServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	@Override
+	public void run(){
+		while(!this.isInterrupted()) {
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		try {
 			
 			// 获取对应笔记本			
-			try {				
+			try {	
 				String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty2("NoteBookName"));
 				// System.out.println(bookGuid);
 	
@@ -197,25 +201,43 @@ public class AdminServlet extends HttpServlet {
 						System.out.println(timeStamp+" :NO");
 					}
 					Thread.sleep(1000 * 40 * 1);
-				}
-	
-			
+				}		
 				
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-			}		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}			
+		
+		}
+	}
+	
+	public static void crun() {
+		if(SLEEP==true) {
+			c.start();
+			SLEEP=false;
+		}
+	}
+	public static void cstop() {
+		if(SLEEP==false && LOCK==false) {
+			c.interrupt();
+			SLEEP=true;
+			c=null;
 		}
 		
-
-	
-		
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	public static boolean isSleep() {
+		return c.SLEEP;
 	}
-
+	public static boolean cisInterrupted() {
+		return c.isInterrupted();
+	}
 }

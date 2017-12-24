@@ -14,7 +14,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   </head>
   <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,11 +48,11 @@
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <h4>启动同步</h4>
-              <a href="${pageContext.request.contextPath }/OnServlet" class="btn btn-primary" role="button" style="margin-top: 10px">GO</a>
+              <a href="${pageContext.request.contextPath }/ShowInfoServletTest" class="btn btn-primary" role="button" style="margin-top: 10px">GO</a>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <h4>停止同步</h4>
-              <a href="${pageContext.request.contextPath }/DownServlet" class="btn btn-danger" role="button" style="margin-top: 10px">STOP</a>
+              <a href="#" class="btn btn-danger" role="button" style="margin-top: 10px">STOP</a>
             </div>
           </div>
         </div>

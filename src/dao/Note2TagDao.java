@@ -96,7 +96,7 @@ public class Note2TagDao {
 	}
 	
 	/**
-	 * 获得和NoteGuid 全部相关的关系
+	 * 获得和tagGuid 全部相关的关系
 	 * @param _tagGuid
 	 * @return
 	 * @throws Exception

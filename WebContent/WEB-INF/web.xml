@@ -9,19 +9,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-	<servlet>
-	   <servlet-name>admin</servlet-name>
-	   <jsp-file>/admin.jsp</jsp-file>   
-	</servlet>
-	<servlet-mapping>
-	   <servlet-name>admin</servlet-name>
-	   <url-pattern>/admin</url-pattern> 
-	</servlet-mapping> 
+  <servlet>
+    <servlet-name>admin</servlet-name>
+    <jsp-file>/admin.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/static/pages/errorPages/404.html</location>
   </error-page>
-    <error-page>
+  <error-page>
     <error-code>500</error-code>
     <location>/static/pages/errorPages/500.html</location>
   </error-page>
@@ -35,7 +35,7 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/AdminServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
@@ -44,6 +44,26 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OnServlet</display-name>
+    <servlet-name>OnServlet</servlet-name>
+    <servlet-class>servlet.OnServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OnServlet</servlet-name>
+    <url-pattern>/OnServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownServlet</display-name>
+    <servlet-name>DownServlet</servlet-name>
+    <servlet-class>servlet.DownServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownServlet</servlet-name>
+    <url-pattern>/DownServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

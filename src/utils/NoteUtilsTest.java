@@ -22,6 +22,8 @@ public class NoteUtilsTest {
 		//从配置文件中获取目的笔记本
 		String b=NoteUtils.getNoteBookGuid(Myutils.getProperty("NoteBookName"));//笔记本:印象博客2.0测试专用
 		System.out.println(b);
+		String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty2("NoteBookName"));
+		System.out.println(bookGuid);
 	}
 	
 	@Test
