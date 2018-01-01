@@ -38,7 +38,7 @@ public class MyController extends Thread{
 
 			
 			// 获取对应笔记本			
-			try {	
+			try {
 				String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty2("NoteBookName"));
 				// System.out.println(bookGuid);
 	

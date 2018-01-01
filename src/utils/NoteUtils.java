@@ -57,7 +57,7 @@ public class NoteUtils {
 		// search NoteBlog
 		for (Notebook notebook : notebooks) {
 			if (name.equals(notebook.getName())) {
-				guid = notebook.getGuid();
+				guid = notebook.getGuid();	
 				// System.out.println(notebook);
 			}
 		}
