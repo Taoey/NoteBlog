@@ -34,8 +34,14 @@ javabean.Tag
             background-color: #24D666;
             color: #fff;
         }
-        ul,ol{ list-style-type:none;}
-        ul,ol,li{ padding:0;margin:0;}
+        .blog_header ul{
+        	list-style-type:none;
+        	ul,ol,li{ padding:0;margin:0;}
+        }
+        .blog_header ul,li{
+        	 padding:0;margin:0;
+        }
+
         /*标签页*/
         .blog-border{
             border: 1px #ccc solid;
@@ -106,7 +112,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         </div>
     </div>
     <div class="col-md-3 col-xs-12  ">
-        <div class="side-list side-margin  blog-border" >
+        <div class="side-list side-margin  blog-border blog_header" >
             <h4 style="color:#7c827f">
                 <span class="glyphicon glyphicon-book"></span>
                				 推荐博文

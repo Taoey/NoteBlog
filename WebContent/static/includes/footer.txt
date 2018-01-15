@@ -13,8 +13,7 @@
                 <a href="http://www.jianshu.com/u/c971d061baa1" ><i class=" iconfont icon-jianshu gly-i" aria-hidden="true"></i></a>
             </div>
             <span>Welcome to visit my website &copy; <a href="https://github.com/Taoey/" style="color:#FFF">TaoeyHuang</a></span>
-                <span>网站访问统计，共访问:</span>
-                
+                <span>网站访问统计，共访问:</span>                
             	<!-- Start of StatCounter Code for Blogger / Blogspot -->
 				<script type="text/javascript">
 				//<![CDATA[
