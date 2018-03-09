@@ -30,7 +30,7 @@ public class Myutils {
 	 */
 	public static String makedir(String blogName) throws FileNotFoundException, IOException{
 		String progectName=Myutils.getProperty("projectName");
-		File dir = new File("");		
+		File dir = new File("");
 		String path=dir.getAbsolutePath()+"\\"+progectName+"\\blogs\\";
 		path=path.replace("bin", "webapps");//把bin目录替换掉
 		File blogContent=new File(path+blogName);

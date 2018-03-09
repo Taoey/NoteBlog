@@ -1,18 +1,11 @@
-#Eclipsse
-.settings/**
-
-
+#Myignore
+/.settings/
+/target/
 # Compiled class file
 *.class
 
-####
-*.properties
-!src/config.properties
-
-.gitignore
-!/.gitignore
-
-
+# Log file
+*.log
 
 
 
