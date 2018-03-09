@@ -53,7 +53,7 @@ public class Note2TagDao {
 	public static int isExist(String noteGuid,String tagGuid) throws Exception {
 
 		connection = JDBCUtil.getConnection();		
-		String sql = String.format("select * from note2Tag where _noteGuid=\"%S\" and  _tagGuid=\"%s\";", noteGuid,tagGuid);				
+		String sql = String.format("select * from note2tag where _noteGuid=\"%S\" and  _tagGuid=\"%s\";", noteGuid,tagGuid);				
 		statement = connection.createStatement();
 		resultSet = statement.executeQuery(sql);
 		
@@ -80,7 +80,7 @@ public class Note2TagDao {
 		
 		connection=JDBCUtil.getConnection();
 		
-		String sql="select _tagGuid from note2Tag where _noteGuid=\""+_noteGuid+"\"";
+		String sql="select _tagGuid from note2tag where _noteGuid=\""+_noteGuid+"\"";
 		statement=connection.createStatement();		
 		resultSet = statement.executeQuery(sql);
 		while (resultSet != null && resultSet.next()) {
@@ -108,7 +108,7 @@ public class Note2TagDao {
 		
 		connection=JDBCUtil.getConnection();
 		
-		String sql="select _noteGuid from note2Tag where _tagGuid=\""+_tagGuid+"\"";
+		String sql="select _noteGuid from note2tag where _tagGuid=\""+_tagGuid+"\"";
 		statement=connection.createStatement();		
 		resultSet = statement.executeQuery(sql);
 		while (resultSet != null && resultSet.next()) {
@@ -133,7 +133,7 @@ public class Note2TagDao {
 	 */
 	public static void delete(String noteGuid, String tagGuid) throws Exception {
 		connection=JDBCUtil.getConnection();
-		String sql="delete from note2Tag where _noteGuid=? and _tagGuid=?";
+		String sql="delete from note2tag where _noteGuid=? and _tagGuid=?";
 		preparedStatement=connection.prepareStatement(sql);
 		
 		preparedStatement.setString(1, noteGuid);

@@ -17,13 +17,9 @@ public class NoteUtilsTest {
 	//succeed
 	public void getNoteBookGuid() throws Exception{
 		//直接给出测试用例
-		String s=NoteUtils.getNoteBookGuid("CCF突击");		
+		String s=NoteUtils.getNoteBookGuid("印象博客");
 		System.out.println(s);//6963a2b9-f62b-4555-a728-21e72cd0cc30
-		//从配置文件中获取目的笔记本
-		String b=NoteUtils.getNoteBookGuid(Myutils.getProperty("NoteBookName"));//笔记本:印象博客2.0测试专用
-		System.out.println(b);
-		String bookGuid = NoteUtils.getNoteBookGuid(Myutils.getProperty2("NoteBookName"));
-		System.out.println(bookGuid);
+
 	}
 	
 	@Test

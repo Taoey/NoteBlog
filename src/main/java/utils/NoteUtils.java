@@ -189,7 +189,7 @@ public class NoteUtils {
 	 */
 	public static void deleteNote(String noteName) {
 		File file = new File("");
-		String dir = String.format(file.getAbsolutePath().replace("bin", "webapps\\ROOT") + "%sblogs", file.separator, file.separator,
+		String dir = String.format(file.getAbsolutePath().replace("bin", "webapps"+file.separator+"ROOT") + "%sblogs", file.separator, file.separator,
 				file.separator);
 		File notePath = new File(dir + file.separator + noteName);
 		String[] fileArray = null;

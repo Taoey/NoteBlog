@@ -10,11 +10,11 @@ public class MyUtilsTest {
 
 	@Test	
 	public void getProperty() throws FileNotFoundException, IOException {
-		System.out.println(Myutils.getProperty("siderText"));
+		System.out.println(Myutils.getProperty("token"));
 	}
 	@Test	
 	public void getProperty2() throws FileNotFoundException, IOException {
-		System.out.println(Myutils.getProperty2("siderText"));
+		System.out.println(Myutils.getProperty2("token"));
 	}
 
 	@Test
