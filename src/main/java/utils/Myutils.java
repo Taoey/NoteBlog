@@ -31,8 +31,8 @@ public class Myutils {
 	public static String makedir(String blogName) throws FileNotFoundException, IOException{
 		String progectName=Myutils.getProperty("projectName");
 		File dir = new File("");
-		String path=dir.getAbsolutePath()+dir.separator+progectName+dir.separator+"blogs"+dir.separator;
-		path=path.replace("bin", "webapps");//把bin目录替换掉
+		String path=dir.getAbsolutePath()+dir.separator+"webapps"+dir.separator+progectName+dir.separator+"blogs"+dir.separator;
+		//path=path.replace("bin", "webapps");//把bin目录替换掉
 		File blogContent=new File(path+blogName);
 		if(!blogContent.exists()){
 			blogContent.mkdirs();
@@ -51,8 +51,8 @@ public class Myutils {
 		BufferedReader bre = null;
 		OutputStreamWriter pw = null;// 定义一个流
 		File file=new File("");	
-		String sourcePath = file.getAbsolutePath()+file.separator+"static"+file.separator+"pages"+file.separator+"NoteIndex.txt";    //源文件地址
-		sourcePath=sourcePath.replace("bin", "webapps"+file.separator+"ROOT");
+		String sourcePath = file.getAbsolutePath()+file.separator+"webapps"+file.separator+"ROOT"+file.separator+"static"+file.separator+"pages"+file.separator+"NoteIndex.txt";    //源文件地址
+		//sourcePath=sourcePath.replace("bin", "webapps"+file.separator+"ROOT");
 		//sourcePath=sourcePath.replace("noteBlog", "noteBlog\\WebContent");
 		
 		InputStreamReader isr = new InputStreamReader(new FileInputStream(sourcePath), "UTF-8");

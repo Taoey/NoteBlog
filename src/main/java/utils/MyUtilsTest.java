@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -21,5 +22,13 @@ public class MyUtilsTest {
 	public void filterPath() {
 		String str="123:\\\"?/";
 		System.out.println(Myutils.filterPath(str));
+	}
+	@Test
+	public void createNoteIndex() {
+		File file=new File("");	
+		String sourcePath = file.getAbsolutePath()+file.separator+"static"+file.separator+"pages"+file.separator+"NoteIndex.txt";    //源文件地址
+		System.out.println(sourcePath);
+		sourcePath=sourcePath.replace("bin", "webapps"+file.separator+"ROOT");
+		System.out.println(sourcePath);
 	}
 }
