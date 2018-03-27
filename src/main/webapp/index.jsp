@@ -6,13 +6,17 @@ dao.Note2TagDao,
 java.util.*,
 javabean.Note,
 javabean.Tag
-
 "%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="<%=basePath%>">
 <meta charset="UTF-8">
 <title>hwt</title>
 <link type="text/css" rel="stylesheet" href="static/tctip/css/myRewards.css">

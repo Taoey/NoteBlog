@@ -1,9 +1,15 @@
 <%@page import="utils.Myutils"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -101,8 +107,8 @@
             <div class="col-lg-3 col-sm-6   special-div">
                 <div class="special-border largerShow">
                     <div class="text-center">
-                        <a href="./tagList.jsp?tagGuid=8bab9ff0-91d0-433c-99f1-353859fcc04c">
-                            <img  src="../images/specialPage/SQL.jpg" height="100" width="100"/>
+                        <a href="static/pages/tagList.jsp?tagGuid=8bab9ff0-91d0-433c-99f1-353859fcc04c">
+                            <img  src="static/images/specialPage/SQL.jpg" height="100" width="100"/>
                             <h3>SQL</h3>
                         </a>
                     </div>
@@ -117,8 +123,8 @@
             <div class="col-lg-3 col-sm-6   special-div">
                 <div class="special-border largerShow">
                     <div class="text-center">
-                        <a href="./tagList.jsp?tagGuid=bdcf2d42-546a-4c47-a0e5-6eefefe159ea">
-                            <img  src="../images/specialPage/Mybatis.jpg" height="100" width="100"/>
+                        <a href="static/pages/tagList.jsp?tagGuid=bdcf2d42-546a-4c47-a0e5-6eefefe159ea">
+                            <img  src="static/images/specialPage/Mybatis.jpg" height="100" width="100"/>
                             <h3>Mybatis</h3>
                         </a>
                     </div>
@@ -134,8 +140,8 @@
             <div class="col-lg-3 col-sm-6   special-div">
                 <div class="special-border largerShow">
                     <div class="text-center">
-                        <a href="./tagList.jsp?tagGuid=0dc2f57e-ce51-4259-9670-3b8f4ea85f9e">
-                            <img  src="../images/specialPage/Bootstrap.png" height="100" width="100"/>
+                        <a href="static/pages/tagList.jsp?tagGuid=0dc2f57e-ce51-4259-9670-3b8f4ea85f9e">
+                            <img  src="static/images/specialPage/Bootstrap.png" height="100" width="100"/>
                             <h3>BootStrap</h3>
                         </a>
                     </div>
@@ -151,8 +157,8 @@
             <div class="col-lg-3 col-sm-6   special-div">
                 <div class="special-border largerShow">
                     <div class="text-center">
-                        <a href="./tagList.jsp?tagGuid=c5f41a9f-6e87-400a-b5a1-550fd7f87bac">
-                            <img  src="../images/specialPage/Github.jpg" height="100" width="100"/>
+                        <a href="static/pages/tagList.jsp?tagGuid=c5f41a9f-6e87-400a-b5a1-550fd7f87bac">
+                            <img  src="static/images/specialPage/Github.jpg" height="100" width="100"/>
                             <h3>Github</h3>
                         </a>
                     </div>
@@ -168,8 +174,8 @@
             <div class="col-lg-3 col-sm-6   special-div">
                 <div class="special-border largerShow">
                     <div class="text-center">
-                        <a href="./tagList.jsp?tagGuid=ed108358-e2c8-43d3-a766-04df365e446f">
-                            <img  src="../images/specialPage/Spring.jpg" height="100" width="100"/>
+                        <a href="static/pages/tagList.jsp?tagGuid=ed108358-e2c8-43d3-a766-04df365e446f">
+                            <img  src="static/images/specialPage/Spring.jpg" height="100" width="100"/>
                             <h3>Spring</h3>
                         </a>
                     </div>

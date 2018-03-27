@@ -9,13 +9,17 @@ java.util.*,
 utils.Myutils,
 javabean.Note,
 javabean.Tag
-
 "%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>	
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="<%=basePath%>">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <title>hwt</title>

@@ -20,7 +20,7 @@ public class DownServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		MyController.cstop();
 		request.getSession().setAttribute("controllerInfo", "down");
-		response.sendRedirect(request.getContextPath()+"/static/pages/runStatusPages/downSucceed.html");
+		response.sendRedirect(request.getContextPath()+"/static/pages/runStatusPages/downSucceed.jsp");
 		return;
 	}
 

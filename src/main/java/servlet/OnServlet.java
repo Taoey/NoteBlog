@@ -32,7 +32,7 @@ public class OnServlet extends HttpServlet {
 		if( !a&& b) {
 			MyController.crun();
 			request.getSession().setAttribute("controllerInfo", "on");		
-			response.sendRedirect(request.getContextPath()+"/static/pages/runStatusPages/onSucceed.html");
+			response.sendRedirect(request.getContextPath()+"/static/pages/runStatusPages/onSucceed.jsp");
 			return;
 			
 		}else {
