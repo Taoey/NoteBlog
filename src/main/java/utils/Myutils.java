@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -28,11 +26,12 @@ public class Myutils {
 	 * @throws IOExceptio
 	 * @throws FileNotFoundException 
 	 */
-	public static String makedir(String blogName) throws FileNotFoundException, IOException{
-		String progectName=Myutils.getProperty("projectName");
+	public static String makedir(String blogName) throws 
+	
+	FileNotFoundException, IOException{
+		String progectAbsolutePath = Myutils.class.getResource("/").getPath().replace("WEB-INF"+File.separator+"classes", "");///home/taoey/mywork/java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/NoteBlog/
 		File dir = new File("");
-		String path=dir.getAbsolutePath()+dir.separator+"webapps"+dir.separator+progectName+dir.separator+"blogs"+dir.separator;
-		//path=path.replace("bin", "webapps");//把bin目录替换掉
+		String path=progectAbsolutePath+File.separator+"blogs"+File.separator;
 		File blogContent=new File(path+blogName);
 		if(!blogContent.exists()){
 			blogContent.mkdirs();
@@ -50,11 +49,9 @@ public class Myutils {
 		String str = "";
 		BufferedReader bre = null;
 		OutputStreamWriter pw = null;// 定义一个流
-		File file=new File("");	
-		String sourcePath = file.getAbsolutePath()+file.separator+"webapps"+file.separator+"ROOT"+file.separator+"static"+file.separator+"pages"+file.separator+"NoteIndex.txt";    //源文件地址
-		//sourcePath=sourcePath.replace("bin", "webapps"+file.separator+"ROOT");
-		//sourcePath=sourcePath.replace("noteBlog", "noteBlog\\WebContent");
-		
+		String progectAbsolutePath = Myutils.class.getResource("/").getPath().replace("WEB-INF"+File.separator+"classes", "");
+		String sourcePath = progectAbsolutePath+File.separator+"static"+File.separator+"pages"+File.separator+"NoteIndex.txt";    //源文件地址
+	
 		InputStreamReader isr = new InputStreamReader(new FileInputStream(sourcePath), "UTF-8");
 		bre = new BufferedReader(isr);
 		

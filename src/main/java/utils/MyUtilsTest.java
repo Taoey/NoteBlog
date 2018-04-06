@@ -30,5 +30,6 @@ public class MyUtilsTest {
 		System.out.println(sourcePath);
 		sourcePath=sourcePath.replace("bin", "webapps"+file.separator+"ROOT");
 		System.out.println(sourcePath);
+		System.out.println(System.getProperty("catalina.home"));
 	}
 }

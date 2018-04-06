@@ -1,4 +1,4 @@
-﻿﻿<%@page import="
+﻿<%@page import="
 utils.Myutils,
 dao.MultiDao,
 dao.NoteDao,
@@ -8,6 +8,10 @@ java.util.*,
 javabean.Note,
 javabean.Tag
 "%>
+﻿<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +84,7 @@ javabean.Tag
 								for(int j=0;j<tList.size();j++){
 									String tagGuid = tList.get(j).getGuid();
 									String name = tList.get(j).getName();									
-									String tagShow =String.format("<a  href=\"../../static/pages/tagList.jsp?tagGuid=%s\">%s</a>",tagGuid,name);					
+									String tagShow =String.format("<a  href=\"%sstatic/pages/tagList.jsp?tagGuid=%s\">%s</a>",basePath,tagGuid,name);					
 									out.println(tagShow);																									
 								}
 							}                        
@@ -124,7 +128,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 									for(int i=0;i<nList.size();i++){
 										String noteGuid = nList.get(i).getGuid();
 										String noteTitle = nList.get(i).getTitle();
-										out.println("<li><a href=\"/../blogs/" + noteGuid + "\" target=\"_blank\">" + noteTitle + "</a></li>");
+										out.println(String.format("<li><a href=\"%sblogs/%s\" target=\"_blank\">%s</a></li>",basePath,noteGuid,noteTitle));
 									}
 								}
 							%>	
