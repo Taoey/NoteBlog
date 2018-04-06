@@ -200,7 +200,7 @@ ul, ol, li {
 									String name = tList.get(j).getName();
 									
 									out.println("<li>");
-									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"/static/pages/tagList.jsp"));
+									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"static/pages/tagList.jsp"));
 									String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",tagGuid2);
 									String tagShow =String.format("<span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a>","f"+i+"f"+j,name);					
 									out.println(input);

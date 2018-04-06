@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-4 col-md-offset-5">
 								<h1>关闭成功</h1>
 								<div class="button">
-									<a href="/"  target="_blank">进入首页</a>
+									<a href=""  target="_blank">进入首页</a>
 								</div>
 							</div>
 						</div>

@@ -184,7 +184,7 @@ ul, ol, li {
 														
 							out.println("<div class=\"blog-item\">");
 							out.println("<div class=\"blog-title\">");
-							out.println("<a href=\"/../blogs/" + guid + "\" target=\"_blank\">" + title + "</a>");//title
+							out.println("<a href=\"blogs/" + guid + "\" target=\"_blank\">" + title + "</a>");//title
 							out.println("</div>");
 							out.println("<div class=\"blog-tags\">");
 							out.println("<ul>");
@@ -200,7 +200,7 @@ ul, ol, li {
 									String name = tList.get(j).getName();
 									
 									out.println("<li>");
-									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"/static/pages/tagList.jsp"));
+									out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i+"f"+j,"static/pages/tagList.jsp"));
 									String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",tagGuid2);
 									String tagShow =String.format("<span class=\"glyphicon glyphicon-tag\"style=\"color:#7c827f\"></span><a  href=\"javascript:document:%s.submit();\">&nbsp%s</a>","f"+i+"f"+j,name);					
 									out.println(input);
@@ -237,7 +237,8 @@ ul, ol, li {
 						for (int i = 0; i < tagList.size(); i++) {
 							String guid = tagList.get(i).getGuid();	
 							String name = tagList.get(i).getName();
-							String tagShow =String.format("<li><a  href=\"javascript:document:%s.submit();\">&nbsp%s<span>(%s)</span></a></li>","f"+i,name,Note2TagDao.getNoteCount(guid));								out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"/static/pages/tagList.jsp"));
+							String tagShow =String.format("<li><a  href=\"javascript:document:%s.submit();\">&nbsp%s<span>(%s)</span></a></li>","f"+i,name,Note2TagDao.getNoteCount(guid));								
+							out.println(String.format("<form id=\"%s\" action=\"%s\">","f"+i,"static/pages/tagList.jsp"));
 							String input=String.format("<input name=\"tagGuid\" type=\"hidden\" value=\"%s\"/>",guid);
 							out.println(input);
 							out.println(tagShow);
